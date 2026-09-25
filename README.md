@@ -1,59 +1,47 @@
-# TechServicesLanding
+# Landing de equipo independiente
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+Base Angular standalone para servicios de formación, desarrollo y mantenimiento de software. Interfaz español/inglés con `@ngx-translate/core`, Tailwind CSS 4 mediante PostCSS y recursos locales.
 
-## Development server
+## Desarrollo
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Usar Node.js 24 LTS (24.15 o superior dentro de la rama 24) y npm 12, como indica `package.json`.
 
 ```bash
-ng generate component component-name
+npm ci
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+La CLI sirve la página en `http://localhost:4200`. Para limitar explícitamente el servidor a la máquina local: `npm start -- --host 127.0.0.1`.
 
 ```bash
-ng generate --help
+npm run build
+npm run test:ci
+npm run typecheck
+npm run check:styles
+npm run check:assets
+npm run format:check
 ```
 
-## Building
+`check:assets` informa un pendiente real: falta la fotografía de 1440 × 1200 porque el generador no entregó suficiente resolución nativa; no se ha ampliado artificialmente ni se referencia ese archivo inexistente. Ver `docs/assets.md`.
 
-To build the project run:
+El build se genera en `dist/tech-services-landing/browser`. No hay backend, autenticación, base de datos ni configuración de despliegue. `npm run format` aplica Prettier. No se configura ESLint en esta etapa; tipos, compilación Angular y comprobación CSS cubren las verificaciones disponibles.
 
-```bash
-ng build
-```
+## Organización y edición
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `src/app/core/config`: datos de contacto confirmados; nunca inventar destinos.
+- `src/app/core/data`: catálogos de navegación, servicios, aplicaciones y proceso con claves de traducción tipadas.
+- `src/app/core/i18n/locales`: fuente única de todos los textos en `es.json` y `en.json`.
+- `src/app/core/services`: cambios de idioma, metadatos y construcción validada de enlaces.
+- `src/app/shared/components`: piezas reutilizables; cada una separa TS, HTML y CSS.
+- `src/app/features/landing`: página cargada mediante ruta y componentes de sección.
+- `public`: fotografías, fuentes, SVG, favicon y licencias locales.
 
-## Running unit tests
+Los diccionarios se empaquetan con la aplicación: no hay descarga de traducciones ni estados de carga por idioma. Español es el idioma inicial y el selector cambia también textos accesibles y metadatos. Los enlaces WhatsApp abren mensajes preparados; no envían mensajes automáticamente.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Tailwind conserva su integración PostCSS. Se importan tema y utilidades, con un reset CSS propio para evitar medidas en píxeles del preflight. El escaneo de Tailwind se limita a las plantillas HTML para que documentación y verificaciones no generen utilidades prohibidas. Usar `page-container` para el contenedor del diseño; `container` pertenece a Tailwind y aplica sus propios límites por breakpoint. No utilizar utilidades de posicionamiento ni `sr-only`.
 
-```bash
-ng test
-```
+Ver [brief](docs/brief.md), [recursos y licencias](docs/assets.md) y [revisión visual](design-qa.md).
 
-## Running end-to-end tests
+Referencias técnicas: [Tailwind con Angular](https://tailwindcss.com/docs/installation/framework-guides/angular), [configuración de ngx-translate](https://ngx-translate.org/reference/configuration/).
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Sistema visual: [tokens, componentes y contraste](docs/design-system.md). Ejecutar `npm run check:contrast` para validar la paleta.

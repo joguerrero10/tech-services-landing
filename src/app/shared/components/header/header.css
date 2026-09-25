@@ -1,0 +1,89 @@
+@reference '../../../../styles.css';
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.25rem;
+}
+.brand {
+  min-width: 0;
+  flex: 1;
+  font-size: var(--text-body);
+  font-weight: 800;
+  color: var(--color-primary);
+  --icon-size: 2rem;
+}
+.brand span {
+  min-width: 0;
+}
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: var(--spacing-control);
+  min-height: var(--spacing-control);
+  padding: 0.625rem;
+  border: var(--border-fine) solid var(--color-control-border);
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  background: transparent;
+  --icon-size: 1.5rem;
+}
+.menu-toggle:hover {
+  background: var(--color-surface);
+}
+.navigation-panel {
+  display: none;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-block: 1rem;
+  border-top: var(--border-fine) solid var(--color-divider);
+}
+.navigation-panel.is-open {
+  display: flex;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--spacing-control);
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+@variant lg {
+  .header {
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+  .brand {
+    flex: 0 1 auto;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .navigation-panel {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem 2rem;
+    padding: 0;
+    border: 0;
+  }
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+}

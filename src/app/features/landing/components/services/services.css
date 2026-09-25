@@ -1,0 +1,59 @@
+@reference '../../../../../styles.css';
+.service-grid {
+  display: grid;
+  margin-top: 2rem;
+}
+.service-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 2rem;
+  border-bottom: var(--border-fine) solid var(--color-divider);
+}
+.service-card:last-child {
+  border-bottom: 0;
+}
+.service-icon {
+  --icon-size: 2rem;
+  color: var(--color-primary);
+}
+.service-heading {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+h3 {
+  font-size: var(--text-card);
+  line-height: var(--text-card--line-height);
+  font-weight: 800;
+}
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+  margin-top: 0.75rem;
+}
+@variant md {
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .service-card {
+    padding: 2rem;
+    gap: 1.25rem;
+  }
+  .service-card:nth-child(odd) {
+    border-right: var(--border-fine) solid var(--color-divider);
+    padding-left: 0;
+  }
+  .service-card:nth-child(even) {
+    padding-right: 0;
+  }
+  .service-card:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+}
+@variant lg {
+  .service-icon {
+    --icon-size: 3rem;
+  }
+}

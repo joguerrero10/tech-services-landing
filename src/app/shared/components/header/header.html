@@ -1,0 +1,37 @@
+<header
+  id="inicio"
+  class="page-container header"
+  (keydown.escape)="closeOnEscape(menuToggle, $event)"
+>
+  <a
+    class="brand flex items-center gap-3"
+    href="#inicio"
+    [attr.aria-label]="'brand.home' | translate"
+  >
+    <app-icon name="code-xml" /><span>{{ 'brand.name' | translate }}</span>
+  </a>
+  <button
+    #menuToggle
+    type="button"
+    class="menu-toggle"
+    aria-controls="site-navigation"
+    [attr.aria-expanded]="menuOpen()"
+    [attr.aria-label]="(menuOpen() ? 'navigation.closeMenu' : 'navigation.openMenu') | translate"
+    (click)="menuOpen.set(!menuOpen())"
+  >
+    <app-icon [name]="menuOpen() ? 'x' : 'menu'" />
+  </button>
+  <div id="site-navigation" class="navigation-panel" [class.is-open]="menuOpen()">
+    <nav [attr.aria-label]="'accessibility.mainNavigation' | translate">
+      @for (item of navigation; track item.href) {
+        <a [href]="item.href" (click)="menuOpen.set(false)">{{ item.label | translate }}</a>
+      }
+    </nav>
+    <div class="header-actions flex flex-wrap items-center gap-5">
+      <app-language-selector />
+      <a class="button button--primary" href="#contacto" (click)="menuOpen.set(false)">{{
+        'navigation.talk' | translate
+      }}</a>
+    </div>
+  </div>
+</header>

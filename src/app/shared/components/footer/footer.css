@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: var(--spacing-section);
+}
+.footer-brand {
+  font-weight: 800;
+  color: var(--color-primary);
+}
+p {
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  margin-top: 0.5rem;
+}
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--spacing-control);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}

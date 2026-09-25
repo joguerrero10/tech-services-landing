@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Equipo independiente | Desarrollo, formación y mantenimiento",
+    "description": "Somos un equipo de profesionales independientes. Desarrollamos software, enseñamos programación y big data y acompañamos tus proyectos."
+  },
+  "brand": {
+    "name": "Equipo independiente",
+    "tagline": "Desarrollo · Formación · Mantenimiento",
+    "home": "Equipo independiente — Inicio"
+  },
+  "accessibility": {
+    "skip": "Saltar al contenido",
+    "mainNavigation": "Navegación principal",
+    "footerNavigation": "Navegación del pie de página"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English",
+    "esShort": "ES",
+    "enShort": "EN"
+  },
+  "navigation": {
+    "services": "Servicios",
+    "applications": "Aplicaciones",
+    "process": "Cómo trabajamos",
+    "contact": "Contacto",
+    "talk": "Hablemos",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "hero": {
+    "eyebrow": "Desarrollo · Formación · Mantenimiento",
+    "title": "Tecnología que te hace la vida",
+    "accent": "más fácil.",
+    "description": "Somos un equipo de profesionales independientes. Creamos software, enseñamos programación y acompañamos tus proyectos.",
+    "secondary": "Explorar servicios",
+    "imageAlt": "Espacio de trabajo compartido con portátiles, plantas y luz cálida sobre una mesa de madera."
+  },
+  "services": {
+    "title": "¿En qué podemos ayudarte?",
+    "intro": "Tarifas iniciales de referencia. Confirmamos alcances y disponibilidad antes de empezar.",
+    "tutoring": {
+      "title": "Tutorías de programación y big data",
+      "description": "Te acompañamos con diagnóstico, clase en vivo, ejercicios y seguimiento.",
+      "price": "USD 30 / hora",
+      "detail": "Paquete de 4 horas: USD 120.",
+      "action": "Consultar tutorías",
+      "message": "Hola, queremos información sobre las tutorías de programación y big data."
+    },
+    "python": {
+      "title": "Curso de fundamentos de Python en vivo",
+      "description": "Enseñamos en 6 sesiones de 2 horas, con ejercicios y un proyecto final. Grupo de 4 a 6 alumnos.",
+      "price": "USD 120 / alumno",
+      "detail": "Lo lanzaremos tras validar el contenido en tutorías.",
+      "badge": "Próximamente",
+      "action": "Consultar el curso",
+      "message": "Hola, queremos información sobre el curso de fundamentos de Python en vivo."
+    },
+    "development": {
+      "title": "Desarrollo de software",
+      "description": "Desarrollamos aplicaciones web y móviles, sistemas internos, integraciones y automatizaciones.",
+      "price": "USD 50 / hora",
+      "detail": "Ejemplo: 40 horas = USD 2,000. Acordamos entregables y alcance.",
+      "action": "Cotizar un proyecto",
+      "message": "Hola, queremos conversar sobre un proyecto de desarrollo de software."
+    },
+    "maintenance": {
+      "title": "Mantenimiento de software",
+      "description": "Acompañamos tu software con mantenimiento programado, pequeños cambios y revisiones.",
+      "price": "USD 100 / mes",
+      "detail": "Incluimos hasta 2 horas. Horas adicionales: USD 50, previa aprobación. Evaluamos el software antes de empezar.",
+      "action": "Consultar mantenimiento",
+      "message": "Hola, queremos información sobre el mantenimiento de software."
+    }
+  },
+  "applications": {
+    "title": "Nuestras aplicaciones",
+    "intro": "Conoce nuestras soluciones y consulta sus funcionalidades.",
+    "finance": {
+      "name": "SmartFinance PTY",
+      "action": "Consultar información de SmartFinance PTY",
+      "message": "Hola, queremos conocer las funcionalidades de SmartFinance PTY."
+    },
+    "pos": {
+      "name": "SmartPOS PTY",
+      "action": "Consultar información de SmartPOS PTY",
+      "message": "Hola, queremos conocer las funcionalidades de SmartPOS PTY."
+    },
+    "action": "Consultar información"
+  },
+  "process": {
+    "title": "Así trabajamos",
+    "conversation": {
+      "number": "1",
+      "title": "Conversamos sobre tu necesidad",
+      "description": "Entendemos tu idea o el apoyo que buscas."
+    },
+    "scope": {
+      "number": "2",
+      "title": "Acordamos alcance y costo",
+      "description": "Definimos entregables y próximos pasos."
+    },
+    "collaboration": {
+      "number": "3",
+      "title": "Trabajamos contigo",
+      "description": "Desarrollamos, enseñamos o mantenemos tu software."
+    }
+  },
+  "contact": {
+    "title": "¿Qué te gustaría crear o aprender?",
+    "description": "Cuéntanos lo que necesitas y encontremos el siguiente paso.",
+    "whatsapp": "Conversemos por WhatsApp",
+    "pending": "Pronto compartiremos nuestros canales de contacto.",
+    "message": "Hola, queremos conocer más sobre sus servicios."
+  }
+}

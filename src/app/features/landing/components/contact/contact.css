@@ -1,0 +1,44 @@
+@reference '../../../../../styles.css';
+.contact {
+  --focus-color: var(--color-on-primary);
+  background-color: var(--color-primary);
+  background-image: url('/images/contact-leaves-960.webp');
+  background-blend-mode: multiply;
+  background-position: center;
+  background-size: cover;
+  color: var(--color-on-primary);
+  padding-block: var(--spacing-section);
+}
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+h2 {
+  color: inherit;
+  font-size: var(--text-section);
+  font-weight: 800;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+p {
+  max-width: var(--container-copy);
+  font-size: var(--text-body);
+}
+@variant lg {
+  .contact {
+    padding-block: var(--spacing-section-lg);
+    background-image: url('/images/contact-leaves-1920.webp');
+  }
+  h2 {
+    font-size: var(--text-section-lg);
+  }
+}
+@media (min-resolution: 2dppx) {
+  .contact {
+    background-image: url('/images/contact-leaves-1920.webp');
+  }
+}

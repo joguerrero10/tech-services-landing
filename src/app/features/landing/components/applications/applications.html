@@ -1,0 +1,28 @@
+<section
+  id="aplicaciones"
+  class="applications section"
+  tabindex="-1"
+  aria-labelledby="applications-title"
+>
+  <div class="page-container">
+    <div class="section-heading">
+      <h2 id="applications-title">{{ 'applications.title' | translate }}</h2>
+      <p>{{ 'applications.intro' | translate }}</p>
+    </div>
+    <div class="application-grid">
+      @for (item of items; track item.id) {
+        <article class="application-card">
+          <app-icon [name]="item.icon" />
+          <div>
+            <h3>{{ item.name | translate }}</h3>
+            <app-contact-link
+              label="applications.action"
+              [message]="item.message"
+              [accessibleLabel]="item.action"
+            />
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

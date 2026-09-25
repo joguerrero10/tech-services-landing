@@ -1,0 +1,5 @@
+<!-- Adapted from Lucide 1.48.0 code-xml; ISC license. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><rect width="24" height="24" rx="5" fill="#193f35" /><g transform="translate(3 3) scale(0.75)" fill="none" stroke="#fdfbf7" stroke-width="2.6666667" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4" />
+  <path d="m6 8-4 4 4 4" />
+  <path d="m14.5 4-5 16" />
+</g></svg>

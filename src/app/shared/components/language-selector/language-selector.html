@@ -1,0 +1,13 @@
+<select
+  #languageSelect
+  [attr.aria-label]="'language.label' | translate"
+  [value]="language.language()"
+  (change)="language.changeLanguage(languageSelect.value)"
+>
+  <option value="es" lang="es" [attr.aria-label]="'language.es' | translate">
+    {{ 'language.esShort' | translate }}
+  </option>
+  <option value="en" lang="en" [attr.aria-label]="'language.en' | translate">
+    {{ 'language.enShort' | translate }}
+  </option>
+</select>

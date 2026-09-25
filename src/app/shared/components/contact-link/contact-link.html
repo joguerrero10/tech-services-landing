@@ -1,0 +1,17 @@
+@if (contact.whatsappUrl(message() | translate); as url) {
+  <a
+    [href]="url"
+    [class]="variant() === 'text' ? 'text-link' : 'button button--' + variant()"
+    [attr.aria-label]="accessibleLabel() ? (accessibleLabel()! | translate) : null"
+  >
+    @if (variant() !== 'text') {
+      <app-icon name="messages-square" />
+    }
+    <span>{{ label() | translate }}</span>
+    @if (variant() === 'text') {
+      <app-icon name="arrow-right" />
+    }
+  </a>
+} @else {
+  <span class="contact-pending">{{ 'contact.pending' | translate }}</span>
+}

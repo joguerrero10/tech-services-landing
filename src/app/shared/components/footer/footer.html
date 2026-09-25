@@ -1,0 +1,14 @@
+<footer class="page-container footer">
+  <div>
+    <a class="footer-brand" href="#inicio">{{ 'brand.name' | translate }}</a>
+    <p>{{ 'brand.tagline' | translate }}</p>
+  </div>
+  <nav
+    class="flex flex-wrap gap-6"
+    [attr.aria-label]="'accessibility.footerNavigation' | translate"
+  >
+    @for (item of navigation; track item.href) {
+      <a [href]="item.href">{{ item.label | translate }}</a>
+    }
+  </nav>
+</footer>

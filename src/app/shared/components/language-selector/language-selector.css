@@ -1,0 +1,13 @@
+select {
+  min-height: var(--spacing-control);
+  padding: 0.625rem 0.75rem;
+  border: var(--border-fine) solid var(--color-control-border);
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  background: var(--color-background);
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+select:hover {
+  background: var(--color-surface);
+}

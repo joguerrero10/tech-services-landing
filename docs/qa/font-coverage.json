@@ -1,0 +1,14 @@
+{
+  "family": "Manrope ExtraLight",
+  "glyphCount": 218,
+  "requiredCharacters": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ÁÉÍÓÚÜÑáéíóúüñ¡¿€–—’",
+  "missingCharacters": [],
+  "axes": [
+    {
+      "tag": "wght",
+      "min": 200.0,
+      "max": 800.0
+    }
+  ],
+  "signature": "wOF2"
+}

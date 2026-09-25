@@ -1,0 +1,51 @@
+@reference '../../../../../styles.css';
+.applications {
+  background: var(--color-surface);
+}
+.application-grid {
+  display: grid;
+  margin-top: 2rem;
+}
+.application-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: 2rem;
+}
+.application-card + .application-card {
+  border-top: var(--border-fine) solid var(--color-divider);
+}
+.application-card > div {
+  min-width: 0;
+}
+app-icon {
+  --icon-size: 2.5rem;
+  color: var(--color-primary);
+}
+h3 {
+  font-size: var(--text-card);
+  line-height: var(--text-card--line-height);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+app-contact-link {
+  margin-top: 0.75rem;
+}
+@variant md {
+  .application-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .application-card {
+    justify-content: center;
+    padding-inline: 1.5rem;
+  }
+  .application-card + .application-card {
+    border-top: 0;
+    border-left: var(--border-fine) solid var(--color-divider);
+  }
+}
+@variant lg {
+  app-icon {
+    --icon-size: 3.5rem;
+  }
+}

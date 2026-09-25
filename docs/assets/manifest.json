@@ -1,0 +1,158 @@
+{
+  "assets": [
+    {
+      "path": "public/images/contact-leaves-1920.webp",
+      "format": "WEBP",
+      "dimensions": "1920 × 640",
+      "bytes": 50558,
+      "sha256": "cbf4aa300c13c21d8d2484bf3fa06d774349dc18f6b2faeb5856a8c2e212c5c8"
+    },
+    {
+      "path": "public/images/contact-leaves-960.webp",
+      "format": "WEBP",
+      "dimensions": "960 × 320",
+      "bytes": 19268,
+      "sha256": "5041ced03a96dfce663434033fcf68d7343dc1c7cd0d4f3fc2bd69d701e34e41"
+    },
+    {
+      "path": "public/images/team-workspace-480.webp",
+      "format": "WEBP",
+      "dimensions": "480 × 400",
+      "bytes": 39298,
+      "sha256": "3c761940e98233811c75e3d4f067608d4e55b78215602cc7d7474a293664f3b6"
+    },
+    {
+      "path": "public/images/team-workspace-960.webp",
+      "format": "WEBP",
+      "dimensions": "960 × 800",
+      "bytes": 100066,
+      "sha256": "5683218bb8f82005485c228bd77dfb21e143d8d6f03c372852f3b9e0bcc963ce"
+    },
+    {
+      "path": "public/icons/arrow-right.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 343,
+      "sha256": "0a3d3733645e158219bf0d3478895a53d70ab2572075bb4cb54d5f229cba5210"
+    },
+    {
+      "path": "public/icons/book-open.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 467,
+      "sha256": "4d9db3cdb0cce546651170a925cf114d2d8838652db033e7a4b5f15813328bc9"
+    },
+    {
+      "path": "public/icons/calculator.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 604,
+      "sha256": "cf0d014503044036e619cd33ac2a03f7a40c8710f2a3e23377632b8e00818efa"
+    },
+    {
+      "path": "public/icons/code-xml.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 373,
+      "sha256": "b10a4e4350694757e0a741bf69433458b0a3bb4cc2480d00ee3df887adfc1583"
+    },
+    {
+      "path": "public/icons/laptop-code.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 612,
+      "sha256": "e20e66d8643c4c21dcf5bc0d43ded37ffecdfe7ef73463eb549f16839d94b4ba"
+    },
+    {
+      "path": "public/icons/laptop.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 482,
+      "sha256": "9d0cdbac2283afcbfd28fc58699cda2704684a8c260cfe5c2fc18a5e9935af1b"
+    },
+    {
+      "path": "public/icons/menu.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 354,
+      "sha256": "3bf452f0ef3e815781e02ac616f0ae8000732dac12e5bbd240e8d99f8cc2eb4f"
+    },
+    {
+      "path": "public/icons/messages-square.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 543,
+      "sha256": "c33e15d03ff42944ad62a76f6bdb03d8675ab2eefe106399991b3a1da2d000d3"
+    },
+    {
+      "path": "public/icons/site-mark.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 433,
+      "sha256": "ce99a67f78f4030712281b8ce5fd218498ec9daaacdffccf575224105f17353d"
+    },
+    {
+      "path": "public/icons/terminal.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 340,
+      "sha256": "3b59ea5818213919e38bcd677606f369a3f930dc694cc2efe6ee4754eacca3d2"
+    },
+    {
+      "path": "public/icons/wallet.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 464,
+      "sha256": "b174423e55f9b86d99e049373a30ac564cda3e0ee508fd1a160506e0cb274527"
+    },
+    {
+      "path": "public/icons/wrench.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 494,
+      "sha256": "82203e2b522ea48381facffbb4b6168769d840581a9143019326b45b5aece000"
+    },
+    {
+      "path": "public/icons/x.svg",
+      "format": "SVG",
+      "dimensions": "0 0 24 24",
+      "bytes": 332,
+      "sha256": "2b24855a933d5f929ebb10c9e8e012c150e505064e00897380ad4e25a5a60965"
+    },
+    {
+      "path": "public/fonts/manrope-latin.woff2",
+      "format": "WOFF2",
+      "dimensions": "—",
+      "bytes": 24836,
+      "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972"
+    },
+    {
+      "path": "docs/assets/originals/contact-leaves.png",
+      "format": "PNG",
+      "dimensions": "2172 × 724",
+      "bytes": 1548099,
+      "sha256": "91a1bff27d9113cf98484472f4d66f6c7bc87b0b37fbafbc9b5f4ee294cd5a3f"
+    },
+    {
+      "path": "docs/assets/originals/team-workspace.png",
+      "format": "PNG",
+      "dimensions": "1374 × 1145",
+      "bytes": 2025713,
+      "sha256": "eefc4c48f60d6eea6fa78b2e5cae440844951668a52a4ed5dc3b07e35e36c41e"
+    },
+    {
+      "path": "public/favicon.ico",
+      "format": "ICO",
+      "dimensions": "16 × 16, 32 × 32, 48 × 48, 64 × 64",
+      "bytes": 7367,
+      "sha256": "386e3405c584f51102dd7df5bbb2388c3d17b7b569792ac98cf3543b4856b1fd"
+    }
+  ],
+  "pending": [
+    {
+      "path": "public/images/team-workspace-1440.webp",
+      "expectedDimensions": [1440, 1200],
+      "reason": "The image generator returned 1374 × 1145 for all three native-resolution requests. Upscaling is prohibited."
+    }
+  ]
+}

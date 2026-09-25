@@ -1,0 +1,26 @@
+<section class="page-container hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">{{ 'hero.eyebrow' | translate }}</p>
+    <h1 id="hero-title">
+      {{ 'hero.title' | translate }} <span>{{ 'hero.accent' | translate }}</span>
+    </h1>
+    <p class="hero-description">{{ 'hero.description' | translate }}</p>
+    <div class="hero-actions flex flex-wrap items-center gap-6">
+      <app-contact-link variant="primary" />
+      <a class="text-link" href="#servicios"
+        >{{ 'hero.secondary' | translate }}<app-icon name="arrow-right"
+      /></a>
+    </div>
+  </div>
+  <img
+    class="hero-photo"
+    src="images/team-workspace-960.webp"
+    srcset="images/team-workspace-480.webp 480w, images/team-workspace-960.webp 960w"
+    sizes="(min-width: 84rem) 38.5rem, (min-width: 64rem) calc((100vw - 7rem) / 2), (min-width: 48rem) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+    width="960"
+    height="800"
+    [alt]="'hero.imageAlt' | translate"
+    fetchpriority="high"
+    decoding="async"
+  />
+</section>

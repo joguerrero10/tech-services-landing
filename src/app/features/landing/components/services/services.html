@@ -1,0 +1,32 @@
+<section
+  id="servicios"
+  class="page-container section services"
+  tabindex="-1"
+  aria-labelledby="services-title"
+>
+  <div class="section-heading">
+    <h2 id="services-title">{{ 'services.title' | translate }}</h2>
+    <p>{{ 'services.intro' | translate }}</p>
+  </div>
+  <div class="service-grid">
+    @for (item of items; track item.id) {
+      <article class="service-card" [attr.aria-labelledby]="'service-' + item.id">
+        <app-icon class="service-icon" [name]="item.icon" />
+        <div class="service-content">
+          <div class="service-heading">
+            <h3 [id]="'service-' + item.id">{{ item.title | translate }}</h3>
+            @if (item.badge) {
+              <span class="badge">{{ item.badge | translate }}</span>
+            }
+          </div>
+          <p class="description">{{ item.description | translate }}</p>
+          <div class="rate-block">
+            <p class="rate-amount">{{ item.price | translate }}</p>
+            <p class="rate-conditions">{{ item.detail | translate }}</p>
+          </div>
+          <app-contact-link [label]="item.action" [message]="item.message" />
+        </div>
+      </article>
+    }
+  </div>
+</section>

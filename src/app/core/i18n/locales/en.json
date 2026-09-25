@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Independent team | Development, learning and maintenance",
+    "description": "We are a team of independent professionals. We develop software, teach programming and big data, and support your projects."
+  },
+  "brand": {
+    "name": "Independent team",
+    "tagline": "Development · Learning · Maintenance",
+    "home": "Independent team — Home"
+  },
+  "accessibility": {
+    "skip": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation"
+  },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English",
+    "esShort": "ES",
+    "enShort": "EN"
+  },
+  "navigation": {
+    "services": "Services",
+    "applications": "Applications",
+    "process": "How we work",
+    "contact": "Contact",
+    "talk": "Let’s talk",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "eyebrow": "Development · Learning · Maintenance",
+    "title": "Technology that makes your life",
+    "accent": "easier.",
+    "description": "We are a team of independent professionals. We build software, teach programming and support your projects.",
+    "secondary": "Explore services",
+    "imageAlt": "Shared workspace with laptops, plants and warm light on a wooden table."
+  },
+  "services": {
+    "title": "How can we help you?",
+    "intro": "Starting rates for reference. We confirm scope and availability before getting started.",
+    "tutoring": {
+      "title": "Programming and big data tutoring",
+      "description": "We support your learning with an assessment, live lessons, exercises and follow-up.",
+      "price": "USD 30 / hour",
+      "detail": "4-hour package: USD 120.",
+      "action": "Ask about tutoring",
+      "message": "Hello, we would like information about programming and big data tutoring."
+    },
+    "python": {
+      "title": "Live Python fundamentals course",
+      "description": "We teach in six 2-hour sessions, with exercises and a final project. Groups of 4 to 6 students.",
+      "price": "USD 120 / student",
+      "detail": "We will launch after validating the content in tutoring sessions.",
+      "badge": "Coming soon",
+      "action": "Request information",
+      "message": "Hello, we would like information about the live Python fundamentals course."
+    },
+    "development": {
+      "title": "Software development",
+      "description": "We develop web and mobile applications, internal systems, integrations and automations.",
+      "price": "USD 50 / hour",
+      "detail": "Example: 40 hours = USD 2,000. We agree on deliverables and scope.",
+      "action": "Discuss a project",
+      "message": "Hello, we would like to discuss a software development project."
+    },
+    "maintenance": {
+      "title": "Software maintenance",
+      "description": "We support your software with scheduled maintenance, small changes and reviews.",
+      "price": "USD 100 / month",
+      "detail": "We include up to 2 hours. Additional hours: USD 50, with prior approval. We assess the software before getting started.",
+      "action": "Ask about maintenance",
+      "message": "Hello, we would like information about software maintenance."
+    }
+  },
+  "applications": {
+    "title": "Our applications",
+    "intro": "Explore our solutions and ask about their features.",
+    "finance": {
+      "name": "SmartFinance PTY",
+      "action": "Request information about SmartFinance PTY",
+      "message": "Hello, we would like to learn about the features of SmartFinance PTY."
+    },
+    "pos": {
+      "name": "SmartPOS PTY",
+      "action": "Request information about SmartPOS PTY",
+      "message": "Hello, we would like to learn about the features of SmartPOS PTY."
+    },
+    "action": "Request information"
+  },
+  "process": {
+    "title": "How we work",
+    "conversation": {
+      "number": "1",
+      "title": "We discuss your needs",
+      "description": "We learn about your idea or the support you need."
+    },
+    "scope": {
+      "number": "2",
+      "title": "We agree on scope and cost",
+      "description": "We define deliverables and next steps."
+    },
+    "collaboration": {
+      "number": "3",
+      "title": "We work with you",
+      "description": "We develop, teach or maintain your software."
+    }
+  },
+  "contact": {
+    "title": "What would you like to build or learn?",
+    "description": "Tell us what you need and let’s find the next step together.",
+    "whatsapp": "Let’s chat on WhatsApp",
+    "pending": "We will share our contact channels soon.",
+    "message": "Hello, we would like to learn more about your services."
+  }
+}

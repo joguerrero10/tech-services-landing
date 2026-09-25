@@ -1,0 +1,13 @@
+:host {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.icon {
+  display: block;
+  width: var(--icon-size, 1.25rem);
+  height: var(--icon-size, 1.25rem);
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}

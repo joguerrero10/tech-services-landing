@@ -1,0 +1,41 @@
+@reference '../../../../../styles.css';
+.process-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+  list-style: none;
+  padding: 0;
+}
+.process-grid li > div {
+  min-width: 0;
+}
+.step-number {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  min-width: var(--spacing-control);
+  min-height: var(--spacing-control);
+  padding: 0.5rem;
+  border-radius: var(--radius-control);
+  background: var(--color-accent);
+  color: var(--color-on-primary);
+  font-weight: 800;
+  font-size: var(--text-lead);
+}
+h3 {
+  font-size: var(--text-card);
+  line-height: var(--text-card--line-height);
+  font-weight: 800;
+  margin-top: 0.5rem;
+}
+p {
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+}
+@variant lg {
+  .process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
