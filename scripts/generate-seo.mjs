@@ -24,12 +24,13 @@ for (const path of [
 }
 // Keep Angular's static root redirect, with useful localized content even without JavaScript.
 const defaultPath = SITE_SETTINGS.locales[SITE_SETTINGS.defaultLocale].path;
+const baseHref = /<base href="([^"]+)"/.exec(await readFile(resolve(directory, `${defaultPath}/index.html`), 'utf8'))?.[1] ?? '/';
 const defaultHtml = await readFile(resolve(directory, `${defaultPath}/index.html`), 'utf8');
 await writeFile(
   resolve(directory, 'index.html'),
   defaultHtml.replace(
     '</head>',
-    `<meta http-equiv="refresh" content="0; url=/${defaultPath}"></head>`,
+    `<meta http-equiv="refresh" content="0; url=${baseHref}${defaultPath}"></head>`,
   ),
 );
 if (sitemap) await writeFile(resolve(directory, 'sitemap.xml'), sitemap);

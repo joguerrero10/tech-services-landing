@@ -6,7 +6,7 @@ import { seoFiles } from './seo-files.mjs';
 
 test('preview and missing domain never advertise a sitemap or allow crawling', () => {
   for (const environment of ['preview', 'production']) {
-    const result = seoFiles(SITE_SETTINGS, environment);
+    const result = seoFiles({...SITE_SETTINGS, publicSiteUrl: null}, environment);
     assert.equal(result.sitemap, null);
     assert.match(result.robots, /Disallow: \//);
   }
@@ -32,7 +32,6 @@ test('invalid origin and environment fail explicitly', () => {
     'invalid',
     'http://example.test',
     'https://localhost',
-    'https://example.test/subpath',
     'https://user:pass@example.test',
   ]) {
     assert.throws(() => seoFiles({ ...SITE_SETTINGS, publicSiteUrl }, 'production'));

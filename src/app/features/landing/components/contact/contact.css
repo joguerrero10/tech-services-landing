@@ -2,7 +2,7 @@
 .contact {
   --focus-color: var(--color-on-primary);
   background-color: var(--color-primary);
-  background-image: url('/images/contact-leaves-960.webp');
+  background-image: url('../../../../../../public/images/contact-leaves-960.webp');
   background-blend-mode: multiply;
   background-position: center;
   background-size: cover;
@@ -31,7 +31,7 @@ p {
 @variant lg {
   .contact {
     padding-block: var(--spacing-section-lg);
-    background-image: url('/images/contact-leaves-1920.webp');
+    background-image: url('../../../../../../public/images/contact-leaves-1920.webp');
   }
   h2 {
     font-size: var(--text-section-lg);
@@ -39,6 +39,6 @@ p {
 }
 @media (min-resolution: 2dppx) {
   .contact {
-    background-image: url('/images/contact-leaves-1920.webp');
+    background-image: url('../../../../../../public/images/contact-leaves-1920.webp');
   }
 }

@@ -1,6 +1,6 @@
 export const SITE_SETTINGS = {
   whatsappNumber: '50768702316' as string | null,
-  publicSiteUrl: null as string | null,
+  publicSiteUrl: 'https://joguerrero10.github.io/tech-services-landing' as string | null,
   supportedLocales: ['es', 'en'],
   defaultLocale: 'es',
   locales: {

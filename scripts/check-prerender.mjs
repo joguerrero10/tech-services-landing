@@ -66,6 +66,7 @@ for (const lang of SITE_SETTINGS.supportedLocales) {
   );
 }
 const root = await readFile(`${base}/index.html`, 'utf8');
-assert.match(root, /url=\/?es/i);
+const baseHref = new JSDOM(root).window.document.querySelector('base').getAttribute('href');
+assert.ok(root.includes(`url=${baseHref}es`));
 assert.equal(new JSDOM(root).window.document.querySelectorAll('#servicios article').length, 4);
 console.log('Root: localized content and static redirect to /es verified.');
