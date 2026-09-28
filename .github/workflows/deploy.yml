@@ -5,45 +5,108 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: true
 
 jobs:
   build:
+    name: Build Angular
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # --------------------------------------------------
+      # Checkout
+      # --------------------------------------------------
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # --------------------------------------------------
+      # Node.js
+      # --------------------------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
+      # --------------------------------------------------
+      # Dependencies
+      # --------------------------------------------------
       - name: Install dependencies
         run: npm ci
 
+      # --------------------------------------------------
+      # Build Angular
+      # --------------------------------------------------
       - name: Build Angular
         run: npm run build -- --base-href /tech-services-landing/
 
-      - name: Setup Pages
+      # --------------------------------------------------
+      # Verify build
+      # --------------------------------------------------
+      - name: Show build output
+        run: |
+          echo "Build output:"
+          find dist -maxdepth 4 -type f | sort
+
+      # --------------------------------------------------
+      # GitHub Pages configuration
+      # --------------------------------------------------
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      # --------------------------------------------------
+      # SPA fallback
+      #
+      # Permite que Angular resuelva rutas como:
+      #
+      # /tech-services-landing/es
+      # /tech-services-landing/en
+      #
+      # después de una recarga.
+      # --------------------------------------------------
+      - name: Create SPA fallback
+        run: |
+          cp ./dist/tech-services-landing/browser/index.html \
+             ./dist/tech-services-landing/browser/404.html
+
+      # --------------------------------------------------
+      # Verify important files
+      # --------------------------------------------------
+      - name: Verify deployment files
+        run: |
+          echo "Checking deployment files..."
+
+          test -f ./dist/tech-services-landing/browser/index.html
+          test -f ./dist/tech-services-landing/browser/404.html
+
+          echo "index.html:"
+          ls -lh ./dist/tech-services-landing/browser/index.html
+
+          echo "404.html:"
+          ls -lh ./dist/tech-services-landing/browser/404.html
+
+      # --------------------------------------------------
+      # Upload GitHub Pages artifact
+      # --------------------------------------------------
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist/tech-services-landing/browser
 
   deploy:
+    name: Deploy to GitHub Pages
+
     needs: build
+
     runs-on: ubuntu-latest
 
     environment:
@@ -51,6 +114,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      # --------------------------------------------------
+      # Deploy
+      # --------------------------------------------------
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
