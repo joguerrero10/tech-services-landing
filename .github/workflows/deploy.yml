@@ -18,93 +18,85 @@ concurrency:
 
 jobs:
   build:
-    name: Build Angular
+    name: Build Angular application
     runs-on: ubuntu-latest
 
     steps:
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Checkout
-      # --------------------------------------------------
+      # ---------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Node.js
-      # --------------------------------------------------
+      #
+      # package.json requires:
+      # node >=24.15.0 <25
+      # ---------------------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
-      # --------------------------------------------------
-      # Dependencies
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Install dependencies
+      # ---------------------------------------------
       - name: Install dependencies
         run: npm ci
 
-      # --------------------------------------------------
-      # Build Angular
-      # --------------------------------------------------
-      - name: Build Angular
-        run: npm run build -- --base-href /tech-services-landing/
+      # ---------------------------------------------
+      # Build specifically for GitHub Pages
+      #
+      # package.json already contains:
+      #
+      # build:pages:
+      # ng build --base-href /tech-services-landing/
+      # && SEO_ENV=production node scripts/generate-seo.mjs
+      # ---------------------------------------------
+      - name: Build for GitHub Pages
+        run: npm run build:pages
 
-      # --------------------------------------------------
-      # Verify build
-      # --------------------------------------------------
-      - name: Show build output
+      # ---------------------------------------------
+      # Verify generated Angular files
+      # ---------------------------------------------
+      - name: Verify Angular prerender output
         run: |
-          echo "Build output:"
-          find dist -maxdepth 4 -type f | sort
+          echo "Generated files:"
+          find dist/tech-services-landing/browser -maxdepth 2 -type f | sort
 
-      # --------------------------------------------------
-      # GitHub Pages configuration
-      # --------------------------------------------------
+          echo ""
+          echo "Checking required files..."
+
+          test -f dist/tech-services-landing/browser/index.html
+          test -f dist/tech-services-landing/browser/es/index.html
+          test -f dist/tech-services-landing/browser/en/index.html
+
+          echo ""
+          echo "Spanish route:"
+          ls -lh dist/tech-services-landing/browser/es/index.html
+
+          echo ""
+          echo "English route:"
+          ls -lh dist/tech-services-landing/browser/en/index.html
+
+      # ---------------------------------------------
+      # Configure GitHub Pages
+      # ---------------------------------------------
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # --------------------------------------------------
-      # SPA fallback
-      #
-      # Permite que Angular resuelva rutas como:
-      #
-      # /tech-services-landing/es
-      # /tech-services-landing/en
-      #
-      # después de una recarga.
-      # --------------------------------------------------
-      - name: Create SPA fallback
-        run: |
-          cp ./dist/tech-services-landing/browser/index.html \
-             ./dist/tech-services-landing/browser/404.html
-
-      # --------------------------------------------------
-      # Verify important files
-      # --------------------------------------------------
-      - name: Verify deployment files
-        run: |
-          echo "Checking deployment files..."
-
-          test -f ./dist/tech-services-landing/browser/index.html
-          test -f ./dist/tech-services-landing/browser/404.html
-
-          echo "index.html:"
-          ls -lh ./dist/tech-services-landing/browser/index.html
-
-          echo "404.html:"
-          ls -lh ./dist/tech-services-landing/browser/404.html
-
-      # --------------------------------------------------
-      # Upload GitHub Pages artifact
-      # --------------------------------------------------
+      # ---------------------------------------------
+      # Upload static Angular application
+      # ---------------------------------------------
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/tech-services-landing/browser
+          path: dist/tech-services-landing/browser
 
   deploy:
     name: Deploy to GitHub Pages
-
     needs: build
 
     runs-on: ubuntu-latest
@@ -114,9 +106,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # --------------------------------------------------
+      # ---------------------------------------------
       # Deploy
-      # --------------------------------------------------
+      # ---------------------------------------------
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
