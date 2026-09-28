@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "2a500aa1-e00c-4b8b-a7cb-8aee28511cd6"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -21,7 +22,11 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "ignore": [
+                  "fonts/manrope-latin.woff2",
+                  "images/contact-leaves-*.webp"
+                ]
               }
             ],
             "styles": [

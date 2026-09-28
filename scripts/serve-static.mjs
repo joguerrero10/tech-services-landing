@@ -18,7 +18,10 @@ const types = {
 };
 createServer(async (request, response) => {
   try {
-    const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    const requested = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    const mount = process.env.BASE_PATH ?? '';
+    if (mount && requested !== mount && !requested.startsWith(`${mount}/`)) { response.writeHead(404).end(); return; }
+    const pathname = mount ? requested.slice(mount.length) || '/' : requested;
     let file = resolve(root, `.${pathname}`);
     if (file !== root && !file.startsWith(root + sep)) {
       response.writeHead(403).end();
