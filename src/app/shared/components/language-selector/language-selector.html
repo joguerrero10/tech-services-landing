@@ -2,12 +2,21 @@
   #languageSelect
   [attr.aria-label]="'language.label' | translate"
   [value]="language.language()"
-  (change)="language.changeLanguage(languageSelect.value)"
+  [disabled]="language.changing()"
+  (change)="selectLanguage(languageSelect)"
 >
-  <option value="es" lang="es" [attr.aria-label]="'language.es' | translate">
-    {{ 'language.esShort' | translate }}
-  </option>
-  <option value="en" lang="en" [attr.aria-label]="'language.en' | translate">
-    {{ 'language.enShort' | translate }}
-  </option>
+  @for (locale of locales; track locale.value) {
+    <option
+      [value]="locale.value"
+      [attr.lang]="locale.value"
+      [selected]="locale.value === language.language()"
+      [attr.selected]="locale.value === language.language() ? '' : null"
+    >
+      {{ locale.label | translate }}
+    </option>
+  }
 </select>
+
+@if (language.error(); as error) {
+  <p class="language-error" role="status">{{ error | translate }}</p>
+}

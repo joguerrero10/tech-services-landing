@@ -1,24 +1,7 @@
 {
-  "meta": {
-    "title": "Independent team | Development, learning and maintenance",
-    "description": "We are a team of independent professionals. We develop software, teach programming and big data, and support your projects."
-  },
-  "brand": {
+  "identity": {
     "name": "Independent team",
-    "tagline": "Development · Learning · Maintenance",
     "home": "Independent team — Home"
-  },
-  "accessibility": {
-    "skip": "Skip to content",
-    "mainNavigation": "Main navigation",
-    "footerNavigation": "Footer navigation"
-  },
-  "language": {
-    "label": "Language",
-    "es": "Español",
-    "en": "English",
-    "esShort": "ES",
-    "enShort": "EN"
   },
   "navigation": {
     "services": "Services",
@@ -29,49 +12,55 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
   "hero": {
     "eyebrow": "Development · Learning · Maintenance",
-    "title": "Technology that makes your life",
-    "accent": "easier.",
+    "title": "Technology that makes your life easier.",
     "description": "We are a team of independent professionals. We build software, teach programming and support your projects.",
     "secondary": "Explore services",
-    "imageAlt": "Shared workspace with laptops, plants and warm light on a wooden table."
+    "imageAlt": "Shared workspace with laptops, plants and warm light on a wooden table.",
+    "titleHighlight": "easier"
   },
   "services": {
     "title": "How can we help you?",
     "intro": "Starting rates for reference. We confirm scope and availability before getting started.",
     "tutoring": {
       "title": "Programming and big data tutoring",
-      "description": "We support your learning with an assessment, live lessons, exercises and follow-up.",
-      "price": "USD 30 / hour",
-      "detail": "4-hour package: USD 120.",
-      "action": "Ask about tutoring",
-      "message": "Hello, we would like information about programming and big data tutoring."
-    },
-    "python": {
-      "title": "Live Python fundamentals course",
-      "description": "We teach in six 2-hour sessions, with exercises and a final project. Groups of 4 to 6 students.",
-      "price": "USD 120 / student",
-      "detail": "We will launch after validating the content in tutoring sessions.",
-      "badge": "Coming soon",
-      "action": "Request information",
-      "message": "Hello, we would like information about the live Python fundamentals course."
+      "description": "Assessment, live lessons, exercises and follow-up.",
+      "price": "{{hourlyRate}} per hour",
+      "detail": "{{packageHours}}-hour package: {{packagePrice}}.",
+      "action": "Ask about tutoring"
     },
     "development": {
       "title": "Software development",
-      "description": "We develop web and mobile applications, internal systems, integrations and automations.",
-      "price": "USD 50 / hour",
-      "detail": "Example: 40 hours = USD 2,000. We agree on deliverables and scope.",
-      "action": "Discuss a project",
-      "message": "Hello, we would like to discuss a software development project."
+      "description": "Web and mobile applications, internal systems, integrations and automations.",
+      "price": "{{referenceHourlyRate}} per hour",
+      "detail": "Agreed deliverables and scope.",
+      "action": "Get a quote for my project",
+      "example": "Example: {{exampleHours}} hours = {{examplePrice}}."
     },
     "maintenance": {
       "title": "Software maintenance",
-      "description": "We support your software with scheduled maintenance, small changes and reviews.",
-      "price": "USD 100 / month",
-      "detail": "We include up to 2 hours. Additional hours: USD 50, with prior approval. We assess the software before getting started.",
+      "description": "Scheduled maintenance, small changes and a review of your software.",
+      "price": "{{monthlyPrice}} per month",
+      "detail": "Up to {{includedHours}} hours included.",
       "action": "Ask about maintenance",
-      "message": "Hello, we would like information about software maintenance."
+      "extraWithApproval": "Additional hours: {{additionalHourlyRate}} per hour, with prior approval.",
+      "extraWithoutApproval": "Additional hours: {{additionalHourlyRate}} per hour.",
+      "note": "Service subject to an assessment of the software."
+    },
+    "pythonCourse": {
+      "title": "Live Python course",
+      "description": "Python fundamentals in {{sessions}} sessions of {{hoursPerSession}} hours, with exercises and a final project.",
+      "price": "{{pricePerStudent}} per student",
+      "detail": "We will launch after validating the content in tutoring sessions.",
+      "badge": "Coming soon",
+      "action": "I’d like information",
+      "group": "Group of {{minStudents}} to {{maxStudents}} students. {{totalHours}} hours in total."
     }
   },
   "applications": {
@@ -79,13 +68,11 @@
     "intro": "Explore our solutions and ask about their features.",
     "finance": {
       "name": "SmartFinance PTY",
-      "action": "Request information about SmartFinance PTY",
-      "message": "Hello, we would like to learn about the features of SmartFinance PTY."
+      "action": "Request information about SmartFinance PTY"
     },
     "pos": {
       "name": "SmartPOS PTY",
-      "action": "Request information about SmartPOS PTY",
-      "message": "Hello, we would like to learn about the features of SmartPOS PTY."
+      "action": "Request information about SmartPOS PTY"
     },
     "action": "Request information"
   },
@@ -111,7 +98,32 @@
     "title": "What would you like to build or learn?",
     "description": "Tell us what you need and let’s find the next step together.",
     "whatsapp": "Let’s chat on WhatsApp",
-    "pending": "We will share our contact channels soon.",
-    "message": "Hello, we would like to learn more about your services."
+    "pending": "We will share our contact channels soon."
+  },
+  "footer": {
+    "tagline": "Development · Learning · Maintenance"
+  },
+  "accessibility": {
+    "skip": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation"
+  },
+  "seo": {
+    "title": "Software development, training and maintenance | Independent team",
+    "description": "We are a team of independent professionals. We offer programming and big data tutoring, software development and maintenance. Explore our upcoming Python course."
+  },
+  "whatsapp": {
+    "general": "Hello, I would like to learn more about your team’s services.",
+    "tutoring": "Hello, I am interested in programming and big data tutoring. I would like to ask about availability and how to get started.",
+    "pythonCourse": "Hello, I would like information about the upcoming Python fundamentals course.",
+    "development": "Hello, I have a project and would like to discuss its scope and request a quote.",
+    "maintenance": "Hello, I would like to ask whether you can maintain my software and learn about the service terms.",
+    "application": "Hello, I would like to learn more about {{productName}} and its features."
+  },
+  "errors": {
+    "unsupportedLanguage": "We offer this page in Spanish and English.",
+    "languageChange": "We could not change the language. We can try again.",
+    "preferenceStorage": "We changed the language, but could not save the preference in this browser.",
+    "contactUnavailable": "We cannot open contact right now. Let’s try again later."
   }
 }

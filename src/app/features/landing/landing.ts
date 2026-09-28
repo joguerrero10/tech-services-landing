@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Hero } from './components/hero/hero';
 import { Services } from './components/services/services';
@@ -9,7 +10,17 @@ import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 @Component({
   selector: 'app-landing',
-  imports: [TranslatePipe, Header, Hero, Services, Applications, Process, Contact, Footer],
+  imports: [
+    RouterLink,
+    TranslatePipe,
+    Header,
+    Hero,
+    Services,
+    Applications,
+    Process,
+    Contact,
+    Footer,
+  ],
   templateUrl: './landing.html',
   styleUrl: './landing.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

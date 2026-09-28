@@ -8,6 +8,22 @@ select {
   font-size: var(--text-small);
   font-weight: 700;
 }
-select:hover {
-  background: var(--color-surface);
+@media (hover: hover) {
+  select:hover {
+    background: var(--color-surface);
+  }
+}
+
+:host {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+.language-error {
+  font-size: var(--text-small);
+  color: var(--color-accent-strong);
+  max-width: 22rem;
+}
+select:disabled {
+  cursor: wait;
 }

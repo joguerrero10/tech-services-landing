@@ -1,4 +1,5 @@
 <section
+  appScrollReveal
   id="servicios"
   class="page-container section services"
   tabindex="-1"
@@ -19,12 +20,27 @@
               <span class="badge">{{ item.badge | translate }}</span>
             }
           </div>
-          <p class="description">{{ item.description | translate }}</p>
+          <p class="description">{{ item.description | translate: parameters()[item.id] }}</p>
+          @if (item.group) {
+            <p class="description">{{ item.group | translate: parameters()[item.id] }}</p>
+          }
           <div class="rate-block">
-            <p class="rate-amount">{{ item.price | translate }}</p>
-            <p class="rate-conditions">{{ item.detail | translate }}</p>
+            <p class="rate-amount">{{ item.price | translate: parameters()[item.id] }}</p>
+            @if (item.example) {
+              <p class="rate-conditions">{{ item.example | translate: parameters()[item.id] }}</p>
+            }
+            <p class="rate-conditions">{{ item.detail | translate: parameters()[item.id] }}</p>
+            @if (item.extra) {
+              <p class="rate-conditions">{{ item.extra | translate: parameters()[item.id] }}</p>
+            }
+            @if (item.note) {
+              <p class="rate-conditions">{{ item.note | translate: parameters()[item.id] }}</p>
+            }
           </div>
-          <app-contact-link [label]="item.action" [message]="item.message" />
+          <app-contact-link
+            [label]="item.action"
+            [inquiry]="{ kind: 'service', serviceId: item.id }"
+          />
         </div>
       </article>
     }

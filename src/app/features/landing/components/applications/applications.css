@@ -4,6 +4,7 @@
 }
 .application-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   margin-top: 2rem;
 }
 .application-card {

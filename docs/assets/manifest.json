@@ -64,7 +64,7 @@
       "sha256": "e20e66d8643c4c21dcf5bc0d43ded37ffecdfe7ef73463eb549f16839d94b4ba"
     },
     {
-      "path": "public/icons/laptop.svg",
+      "path": "docs/assets/originals/icons/laptop.svg",
       "format": "SVG",
       "dimensions": "0 0 24 24",
       "bytes": 482,

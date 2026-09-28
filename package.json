@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node scripts/generate-seo.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false",
@@ -13,7 +13,14 @@
     "format:check": "prettier --check src docs README.md design-qa.md scripts package.json tsconfig.json",
     "check:styles": "node scripts/check-styles.mjs",
     "check:assets": "node scripts/check-assets.mjs",
-    "check:contrast": "node scripts/check-contrast.mjs"
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "test:i18n-validator": "node --test scripts/check-i18n.test.mjs",
+    "build:production": "ng build && SEO_ENV=production node scripts/generate-seo.mjs",
+    "check:prerender": "node scripts/check-prerender.mjs",
+    "serve:static": "node scripts/serve-static.mjs",
+    "test:seo": "node --test scripts/seo-files.test.mjs",
+    "check:public": "node scripts/check-public.mjs"
   },
   "private": true,
   "packageManager": "npm@12.0.2",
@@ -23,7 +30,9 @@
     "@angular/core": "^22.1.0",
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
+    "@angular/platform-server": "^22.2.0",
     "@angular/router": "^22.1.0",
+    "@angular/ssr": "^22.2.0",
     "@ngx-translate/core": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -42,5 +51,6 @@
   },
   "engines": {
     "node": ">=24.15.0 <25"
-  }
+  },
+  "type": "module"
 }

@@ -64,13 +64,13 @@ No hay sombras, alturas fijas para texto ni truncamiento. Los controles crecen c
 
 ## Responsive
 
-| Variante | Umbral | Comportamiento                                                               |
-| -------- | ------ | ---------------------------------------------------------------------------- |
-| Base     | —      | Hero, servicios, aplicaciones y proceso en una columna; menú desplegable     |
-| `sm`     | 40rem  | H1 de 2.75rem                                                                |
-| `md`     | 48rem  | Servicios 2 × 2 y aplicaciones en dos columnas; gutters de 2rem              |
-| `lg`     | 64rem  | Hero en dos columnas, proceso en tres, navegación visible; secciones de 5rem |
-| `xl`     | 80rem  | H1 de 4rem                                                                   |
+| Variante | Umbral | Comportamiento                                                                                              |
+| -------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| Base     | —      | Hero, servicios, aplicaciones y proceso en una columna; menú desplegable                                    |
+| `sm`     | 40rem  | H1 de 2.75rem                                                                                               |
+| `md`     | 48rem  | Hero y aplicaciones en dos columnas, servicios 2 × 2, proceso en tres y navegación visible; gutters de 2rem |
+| `lg`     | 64rem  | H1 de 3.25rem, separación del hero de 3rem y secciones de 5rem                                              |
+| `xl`     | 80rem  | H1 de 4rem                                                                                                  |
 
 El contenedor `.page-container` llega a 80rem, con márgenes automáticos y gutters mínimos. No sustituirlo por la utilidad `container` de Tailwind, cuyo comportamiento es distinto. Los servicios forman una cuadrícula abierta con divisores horizontales en móvil y divisores entre columnas desde `md`. Las aplicaciones cambian el separador horizontal por uno vertical desde `md`.
 
@@ -83,7 +83,7 @@ El contenedor `.page-container` llega a 80rem, con márgenes automáticos y gutt
 - **`.badge`:** etiqueta traducida «Próximamente» / «Coming soon», terracota oscuro sobre fondo suave.
 - **`.rate-block`:** agrupación de `.rate-amount` y `.rate-conditions`, con jerarquía tipográfica y separación de 0.5rem.
 - **Menú móvil:** botón nativo con `aria-expanded`, `aria-controls` y nombre traducido; panel oculto con `display: none` cuando está cerrado. Al abrirlo, empuja el hero. Se cierra al seguir un enlace; Escape lo cierra y devuelve el foco al botón. En escritorio el panel siempre es visible y el botón queda oculto.
-- **Foco de teclado:** contorno terracota sobre crema/blanco, crema sobre verde mediante `--focus-color`. El enlace para saltar al contenido se expande dentro del flujo al recibir foco.
+- **Foco de teclado:** contorno terracota sobre crema/blanco, crema sobre verde mediante `--focus-color`. El enlace para saltar al contenido permanece visible y compacto dentro del flujo, con foco destacado.
 
 Los iconos externos se usan como máscaras locales con el color del componente; no se supone que un `img` herede `currentColor`. Transiciones únicamente de color, fondo y borde. `prefers-reduced-motion` elimina transiciones y animaciones.
 
@@ -113,3 +113,18 @@ Las utilidades existentes como `flex`, `flex-wrap`, `items-center` y `gap-6` con
 La fotografía de hero de 1440 píxeles sigue pendiente de la etapa de recursos: los archivos de 480 y 960 son reales y se reutilizan sin ampliarlos. Consultar `assets.md` para origen, licencias y limitaciones; este sistema visual no modifica esos recursos.
 
 Referencias: [tema de Tailwind](https://tailwindcss.com/docs/theme), [directivas `@reference` y `@variant`](https://tailwindcss.com/docs/functions-and-directives), [contraste mínimo WCAG](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum).
+
+El hero usa 1.5rem de espacio superior (3.5rem desde `lg`) y deja la separación inferior a la siguiente sección para evitar sumar dos paddings. En dos columnas compactas (`md`), el H1 usa 2.25rem. El proceso tiene círculos de tamaño mínimo 2.25rem y token `radius-round: 999rem`, con crecimiento natural. El título completo resalta una frase traducible mediante `HighlightTextPipe`; no se introduce HTML arbitrario.
+
+## Movimiento: dos familias
+
+- **Aparición de secciones**: `ScrollReveal`, en `shared/directives`, observa servicios, aplicaciones, proceso y contacto. Al entrar en el viewport reproduce una sola animación de opacidad 0 → 1 y desplazamiento 0.75rem → 0 durante 400ms, sin desfase. No afecta al hero, H1, CTA principal ni fotografía. El estado de espera es visible: únicamente el callback de IntersectionObserver activa la animación. La ausencia o fallo del observador no oculta contenido. Desconecta al intersectar y al destruir; elimina escuchas al finalizar. La animación no se aplica mientras la sección contiene el foco para mantener visibles los controles al navegar por teclado.
+- **Respuesta de controles**: colores, fondo y bordes cambian en 160ms; hover se limita a dispositivos con `(hover: hover)`. Sin desplazamientos ni cambios de dimensiones. El contorno de foco es inmediato e independiente.
+
+`prefers-reduced-motion: reduce` evita la observación y las animaciones, cancela una aparición en curso al cambiar la preferencia y conserva el contenido visible. Los saltos entre secciones permanecen instantáneos; no se introduce scroll suave. No se animan continuamente tarifas ni etiquetas: «Próximamente» es estática. La animación no cambia alturas y admite traducciones que ocupen más líneas; cambiar textos en la misma sección no la reproduce otra vez.
+
+La mejora requiere JavaScript para activarse, pero no para mantener visible el contenido HTML existente. Las páginas prerenderizadas mantienen su contenido visible sin JavaScript; la directiva solo añade movimiento en el navegador.
+
+## Reflujo con texto ampliado
+
+La revisión con fuente raíz al 200% y ancho de 20rem detectó mínimos intrínsecos demasiado anchos. El cuerpo permite `overflow-wrap: anywhere` como recurso de último caso; los bloques Grid móviles usan `minmax(0, 1fr)` y el texto de botones puede encoger y envolver. La identidad del header tiene base flexible de 12rem, permitiendo que el botón de menú pase de fila cuando el texto crece. No se oculta contenido ni se cambia el tamaño raíz normal.

@@ -3,7 +3,7 @@
   display: grid;
   gap: 2rem;
   align-items: center;
-  padding-block: var(--spacing-section);
+  padding-block: 1.5rem 0;
 }
 .hero-copy {
   min-width: 0;
@@ -22,9 +22,6 @@ h1 {
   line-height: var(--leading-heading);
   letter-spacing: var(--tracking-heading);
   text-wrap: balance;
-}
-h1 span {
-  color: var(--color-accent);
 }
 .hero-description {
   max-width: var(--container-copy);
@@ -47,16 +44,30 @@ h1 span {
     font-size: var(--text-display-sm);
   }
 }
-@variant lg {
+@variant md {
   .hero {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  h1 {
+    font-size: var(--text-display);
+  }
+}
+
+.title-highlight {
+  color: var(--color-accent);
+}
+
+@variant lg {
+  .hero {
     gap: 3rem;
-    padding-block: var(--spacing-section-lg);
+    padding-block: var(--spacing-section) 0;
   }
   h1 {
     font-size: var(--text-display-lg);
   }
 }
+
 @variant xl {
   h1 {
     font-size: var(--text-display-xl);

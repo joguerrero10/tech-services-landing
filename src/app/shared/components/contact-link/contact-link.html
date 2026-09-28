@@ -1,6 +1,7 @@
-@if (contact.whatsappUrl(message() | translate); as url) {
+@let link = state();
+@if (link.status === 'available') {
   <a
-    [href]="url"
+    [href]="link.url"
     [class]="variant() === 'text' ? 'text-link' : 'button button--' + variant()"
     [attr.aria-label]="accessibleLabel() ? (accessibleLabel()! | translate) : null"
   >
@@ -13,5 +14,5 @@
     }
   </a>
 } @else {
-  <span class="contact-pending">{{ 'contact.pending' | translate }}</span>
+  <span class="contact-pending" role="status">{{ link.explanation | translate }}</span>
 }

@@ -1,0 +1,312 @@
+[
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "265px",
+      ".hero": "265px",
+      ".process-grid": "265px",
+      ".service-grid": "265px"
+    },
+    "h1": "Tecnología que te hace la vida más fácil.",
+    "highlight": "más fácil",
+    "lang": "es",
+    "overflow": false,
+    "positioned": 0,
+    "width": 320
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "335px",
+      ".hero": "335px",
+      ".process-grid": "335px",
+      ".service-grid": "335px"
+    },
+    "h1": "Tecnología que te hace la vida más fácil.",
+    "highlight": "más fácil",
+    "lang": "es",
+    "overflow": false,
+    "positioned": 0,
+    "width": 390
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "344.5px 344.5px",
+      ".hero": "328.5px 328.5px",
+      ".process-grid": "203px 203px 203px",
+      ".service-grid": "344.5px 344.5px"
+    },
+    "h1": "Tecnología que te hace la vida más fácil.",
+    "highlight": "más fácil",
+    "lang": "es",
+    "overflow": false,
+    "positioned": 0,
+    "width": 768
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "417px 417px",
+      ".hero": "401px 401px",
+      ".process-grid": "251.328px 251.328px 251.328px",
+      ".service-grid": "417px 417px"
+    },
+    "h1": "Tecnología que te hace la vida más fácil.",
+    "highlight": "más fácil",
+    "lang": "es",
+    "overflow": false,
+    "positioned": 0,
+    "width": 913
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "640px 640px",
+      ".hero": "616px 616px",
+      ".process-grid": "400px 400px 400px",
+      ".service-grid": "640px 640px"
+    },
+    "h1": "Tecnología que te hace la vida más fácil.",
+    "highlight": "más fácil",
+    "lang": "es",
+    "overflow": false,
+    "positioned": 0,
+    "width": 1440
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "265px",
+      ".hero": "265px",
+      ".process-grid": "265px",
+      ".service-grid": "265px"
+    },
+    "h1": "Technology that makes your life easier.",
+    "highlight": "easier",
+    "lang": "en",
+    "overflow": false,
+    "positioned": 0,
+    "width": 320
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "335px",
+      ".hero": "335px",
+      ".process-grid": "335px",
+      ".service-grid": "335px"
+    },
+    "h1": "Technology that makes your life easier.",
+    "highlight": "easier",
+    "lang": "en",
+    "overflow": false,
+    "positioned": 0,
+    "width": 390
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "344.5px 344.5px",
+      ".hero": "328.5px 328.5px",
+      ".process-grid": "203px 203px 203px",
+      ".service-grid": "344.5px 344.5px"
+    },
+    "h1": "Technology that makes your life easier.",
+    "highlight": "easier",
+    "lang": "en",
+    "overflow": false,
+    "positioned": 0,
+    "width": 768
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "417px 417px",
+      ".hero": "401px 401px",
+      ".process-grid": "251.328px 251.328px 251.328px",
+      ".service-grid": "417px 417px"
+    },
+    "h1": "Technology that makes your life easier.",
+    "highlight": "easier",
+    "lang": "en",
+    "overflow": false,
+    "positioned": 0,
+    "width": 913
+  },
+  {
+    "circles": [
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      },
+      {
+        "height": 36,
+        "radius": "15984px",
+        "width": 36
+      }
+    ],
+    "grids": {
+      ".application-grid": "640px 640px",
+      ".hero": "616px 616px",
+      ".process-grid": "400px 400px 400px",
+      ".service-grid": "640px 640px"
+    },
+    "h1": "Technology that makes your life easier.",
+    "highlight": "easier",
+    "lang": "en",
+    "overflow": false,
+    "positioned": 0,
+    "width": 1440
+  }
+]

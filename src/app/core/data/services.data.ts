@@ -1,15 +1,19 @@
+import { SERVICES_CONFIG, ServiceId } from '../config/services.config';
 import type { IconName } from './icons.data';
 import type { TranslationKey } from '../i18n/translation.model';
 interface ServiceItem {
-  readonly id: string;
+  readonly id: ServiceId;
   readonly icon: IconName;
   readonly title: TranslationKey;
   readonly description: TranslationKey;
   readonly price: TranslationKey;
   readonly detail: TranslationKey;
   readonly action: TranslationKey;
-  readonly message: TranslationKey;
   readonly badge: TranslationKey | null;
+  readonly extra?: TranslationKey;
+  readonly group?: TranslationKey;
+  readonly example?: TranslationKey;
+  readonly note?: TranslationKey;
 }
 export const SERVICES: readonly ServiceItem[] = [
   {
@@ -20,19 +24,19 @@ export const SERVICES: readonly ServiceItem[] = [
     price: 'services.tutoring.price',
     detail: 'services.tutoring.detail',
     action: 'services.tutoring.action',
-    message: 'services.tutoring.message',
     badge: null,
   },
   {
-    id: 'python',
+    id: 'python-course',
     icon: 'terminal',
-    title: 'services.python.title',
-    description: 'services.python.description',
-    price: 'services.python.price',
-    detail: 'services.python.detail',
-    action: 'services.python.action',
-    message: 'services.python.message',
-    badge: 'services.python.badge',
+    title: 'services.pythonCourse.title',
+    description: 'services.pythonCourse.description',
+    group: 'services.pythonCourse.group',
+    price: 'services.pythonCourse.price',
+    detail: 'services.pythonCourse.detail',
+    action: 'services.pythonCourse.action',
+    badge:
+      SERVICES_CONFIG['python-course'].status === 'upcoming' ? 'services.pythonCourse.badge' : null,
   },
   {
     id: 'development',
@@ -41,8 +45,8 @@ export const SERVICES: readonly ServiceItem[] = [
     description: 'services.development.description',
     price: 'services.development.price',
     detail: 'services.development.detail',
+    example: 'services.development.example',
     action: 'services.development.action',
-    message: 'services.development.message',
     badge: null,
   },
   {
@@ -52,8 +56,11 @@ export const SERVICES: readonly ServiceItem[] = [
     description: 'services.maintenance.description',
     price: 'services.maintenance.price',
     detail: 'services.maintenance.detail',
+    note: 'services.maintenance.note',
     action: 'services.maintenance.action',
-    message: 'services.maintenance.message',
+    extra: SERVICES_CONFIG.maintenance.requiresApprovalForExtraWork
+      ? 'services.maintenance.extraWithApproval'
+      : 'services.maintenance.extraWithoutApproval',
     badge: null,
   },
 ];

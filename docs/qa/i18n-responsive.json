@@ -1,0 +1,212 @@
+[
+  {
+    "client": 305,
+    "grid": {
+      ".application-grid": "265px",
+      ".hero": "265px",
+      ".process-grid": "265px",
+      ".service-grid": "265px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 305,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 320
+  },
+  {
+    "client": 375,
+    "grid": {
+      ".application-grid": "335px",
+      ".hero": "335px",
+      ".process-grid": "335px",
+      ".service-grid": "335px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 375,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 390
+  },
+  {
+    "client": 625,
+    "grid": {
+      ".application-grid": "585px",
+      ".hero": "585px",
+      ".process-grid": "585px",
+      ".service-grid": "585px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 625,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 640
+  },
+  {
+    "client": 753,
+    "grid": {
+      ".application-grid": "344.5px 344.5px",
+      ".hero": "689px",
+      ".process-grid": "689px",
+      ".service-grid": "344.5px 344.5px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 753,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 768
+  },
+  {
+    "client": 1009,
+    "grid": {
+      ".application-grid": "472.5px 472.5px",
+      ".hero": "448.5px 448.5px",
+      ".process-grid": "288.328px 288.328px 288.344px",
+      ".service-grid": "472.5px 472.5px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 1009,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 1024
+  },
+  {
+    "client": 1265,
+    "grid": {
+      ".application-grid": "600.5px 600.5px",
+      ".hero": "576.5px 576.5px",
+      ".process-grid": "373.656px 373.672px 373.656px",
+      ".service-grid": "600.5px 600.5px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 1265,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 1280
+  },
+  {
+    "client": 1425,
+    "grid": {
+      ".application-grid": "640px 640px",
+      ".hero": "616px 616px",
+      ".process-grid": "400px 400px 400px",
+      ".service-grid": "640px 640px"
+    },
+    "lang": "es",
+    "positioned": 0,
+    "scroll": 1425,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 1440
+  },
+  {
+    "client": 305,
+    "grid": {
+      ".application-grid": "265px",
+      ".hero": "265px",
+      ".process-grid": "265px",
+      ".service-grid": "265px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 305,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 320
+  },
+  {
+    "client": 375,
+    "grid": {
+      ".application-grid": "335px",
+      ".hero": "335px",
+      ".process-grid": "335px",
+      ".service-grid": "335px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 375,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 390
+  },
+  {
+    "client": 625,
+    "grid": {
+      ".application-grid": "585px",
+      ".hero": "585px",
+      ".process-grid": "585px",
+      ".service-grid": "585px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 625,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 640
+  },
+  {
+    "client": 753,
+    "grid": {
+      ".application-grid": "344.5px 344.5px",
+      ".hero": "689px",
+      ".process-grid": "689px",
+      ".service-grid": "344.5px 344.5px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 753,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 768
+  },
+  {
+    "client": 1009,
+    "grid": {
+      ".application-grid": "472.5px 472.5px",
+      ".hero": "448.5px 448.5px",
+      ".process-grid": "288.328px 288.328px 288.344px",
+      ".service-grid": "472.5px 472.5px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 1009,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 1024
+  },
+  {
+    "client": 1265,
+    "grid": {
+      ".application-grid": "600.5px 600.5px",
+      ".hero": "576.5px 576.5px",
+      ".process-grid": "373.656px 373.672px 373.656px",
+      ".service-grid": "600.5px 600.5px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 1265,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 1280
+  },
+  {
+    "client": 1425,
+    "grid": {
+      ".application-grid": "640px 640px",
+      ".hero": "616px 616px",
+      ".process-grid": "400px 400px 400px",
+      ".service-grid": "640px 640px"
+    },
+    "lang": "en",
+    "positioned": 0,
+    "scroll": 1425,
+    "smallText": 0,
+    "unresolved": false,
+    "width": 1440
+  }
+]

@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Icon } from '../icon/icon';
@@ -5,7 +6,7 @@ import { LanguageSelector } from '../language-selector/language-selector';
 import { NAVIGATION } from '../../../core/data/navigation.data';
 @Component({
   selector: 'app-header',
-  imports: [TranslatePipe, Icon, LanguageSelector],
+  imports: [RouterLink, TranslatePipe, Icon, LanguageSelector],
   templateUrl: './header.html',
   styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -39,7 +39,7 @@ Header, selector de idioma, hero, servicios, aplicaciones, proceso de trabajo, c
 
 Proceso: conversamos sobre la necesidad, acordamos alcance y costo, trabajamos contigo. Productos: mostrar nombre y consulta de información, sin inventar pantallas o prestaciones.
 
-WhatsApp confirmado por el usuario: **+507 6870-2316**. Configuración central en `src/app/core/config/contact.config.ts`, con dígitos internacionales `50768702316`. Los enlaces preparan mensajes traducidos específicos; no envían mensajes automáticamente. No se agregan otros datos de contacto.
+WhatsApp confirmado por el usuario: **+507 6870-2316**. Configuración central en `src/app/core/config/site.config.ts` (adaptador de contacto en `contact.config.ts`), con dígitos internacionales `50768702316`. Los enlaces preparan mensajes traducidos específicos; no envían mensajes automáticamente. No se agregan otros datos de contacto.
 
 ## Diseño y accesibilidad
 
@@ -63,7 +63,7 @@ Angular standalone, TypeScript estricto y plantillas estrictas; Tailwind CSS 4 c
 src/app/
   app.*                       Composición, bootstrap y rutas
   core/
-    config/                   Configuración de contacto
+    config/                   Configuración de contacto y servicios
     data/                     Catálogos y claves i18n tipadas
     i18n/                     Tipos y loader local
       locales/                es.json y en.json
@@ -87,12 +87,12 @@ Cada componente tiene TypeScript, HTML y CSS separados. `features` consume `core
 
 ## Internacionalización
 
-- Todo texto de interfaz proviene de los diccionarios, incluidos nombres de producto, precios, acciones, etiquetas, alt y metadatos.
-- Únicamente español e inglés para contenido e interfaz. Español inicial e inglés seleccionable; se actualiza `html[lang]`, título, descripción y Open Graph.
+- Todo texto de interfaz proviene de los diccionarios, incluidos nombres de producto, frases de tarifas, acciones, etiquetas, alt y metadatos. Los valores numéricos viven en configuración tipada y se interpolan con formato USD según locale.
+- Únicamente español e inglés. `/es` y `/en` determinan el idioma mediante un mapeo explícito; `/` e idiomas o rutas inválidos redirigen a `/es`. Se actualiza `html[lang]`, título, descripción y Open Graph antes de activar el contenido.
 - Diccionarios locales incorporados al bundle, disponibles antes de renderizar, sin cargador HTTP adicional.
-- Los catálogos guardan claves, no traducciones copiadas. Comprobar paridad de claves entre idiomas.
-- El selector no persiste preferencias en esta etapa.
-- El título del HTML inicial queda vacío y se establece desde i18n al iniciar Angular. Si se necesita indexación sin JavaScript, evaluar prerender en una etapa posterior.
+- Los catálogos guardan claves completas y tipadas. Comprobar paridad de claves e interpolaciones, traducciones vacías y referencias inexistentes con `npm run check:i18n`.
+- El selector nativo guarda la elección de forma segura y conserva la sección. La ruta siempre prevalece sobre la preferencia; un fallo de almacenamiento no impide navegar.
+- Resolver y cargador local compatibles con servidor, sin detectar idioma desde el navegador. Generamos HTML estático completo e hidratable para `/es` y `/en`, con redirección estática desde `/`: ver `docs/seo-prerender.md`.
 
 ## Restricciones y verificación
 

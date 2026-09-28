@@ -61,6 +61,7 @@
   --radius-*: initial;
   --radius-control: 0.75rem;
   --radius-media: 1rem;
+  --radius-round: 999rem;
   --border-fine: 0.0625rem;
   --outline-focus: 0.1875rem;
   --outline-offset: 0.25rem;
@@ -71,6 +72,7 @@
   --breakpoint-lg: 64rem;
   --breakpoint-xl: 80rem;
   --duration-interaction: 160ms;
+  --duration-reveal: 400ms;
   --ease-interaction: cubic-bezier(0.2, 0, 0, 1);
   --default-transition-duration: 160ms;
   --default-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
@@ -91,6 +93,7 @@
   body {
     margin: 0;
     font-size: var(--text-body);
+    overflow-wrap: anywhere;
   }
   h1,
   h2,
@@ -133,9 +136,11 @@
       background-color var(--duration-interaction) var(--ease-interaction),
       border-color var(--duration-interaction) var(--ease-interaction);
   }
-  a:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
+  @media (hover: hover) {
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
   }
   ::selection {
     background: var(--color-accent-soft);
@@ -204,7 +209,6 @@
     background: var(--color-primary);
     color: var(--color-on-primary);
   }
-  .button--primary:hover,
   .button--primary:active {
     background: var(--color-primary-hover);
   }
@@ -212,9 +216,11 @@
     background: var(--color-on-primary);
     color: var(--color-primary);
   }
-  .button--light:hover,
   .button--light:active {
     background: var(--color-surface);
+  }
+  .button > span {
+    min-width: 0;
   }
   .button app-icon {
     --icon-size: 1.25rem;
@@ -230,8 +236,31 @@
     font-weight: 700;
     line-height: var(--leading-body);
   }
-  .text-link:hover {
-    color: var(--color-primary-hover);
+  @media (hover: hover) {
+    .button--primary:hover {
+      background: var(--color-primary-hover);
+    }
+    .button--light:hover {
+      background: var(--color-surface);
+    }
+    .text-link:hover {
+      color: var(--color-primary-hover);
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal-running:not(:focus-within) {
+      animation: section-reveal var(--duration-reveal) ease-out;
+    }
+  }
+  @keyframes section-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .badge {
     display: inline-flex;
@@ -263,14 +292,15 @@
   }
   .skip-link {
     display: block;
-    max-height: 0;
-    overflow: hidden;
+    width: fit-content;
+    margin: 0.5rem auto 0;
+    padding: 0.25rem 0.5rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
     text-align: center;
     font-size: var(--text-small);
   }
   .skip-link:focus {
-    max-height: none;
-    padding: 0.75rem;
-    outline-offset: -0.25rem;
+    outline-offset: var(--outline-offset);
   }
 }

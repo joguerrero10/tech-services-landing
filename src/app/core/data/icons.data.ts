@@ -3,7 +3,6 @@ export const ICON_NAMES = [
   'book-open',
   'calculator',
   'code-xml',
-  'laptop',
   'laptop-code',
   'menu',
   'messages-square',

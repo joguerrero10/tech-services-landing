@@ -1,32 +1,35 @@
+import { provideRouter } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
-import { provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
+import { RouterTestingHarness } from '@angular/router/testing';
+import { provideTranslateService, provideTranslateLoader } from '@ngx-translate/core';
 import { LocalTranslationLoader } from '../../core/i18n/local-translation-loader';
-import { LanguageService } from '../../core/services/language.service';
-import { Landing } from './landing';
+import { routes } from '../../app.routes';
 
 describe('Landing content and interactions', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Landing],
       providers: [
+        provideRouter(routes),
         provideTranslateService({
           fallbackLang: 'es',
           loader: provideTranslateLoader(LocalTranslationLoader),
         }),
       ],
     }).compileComponents();
-    await TestBed.inject(LanguageService).initialize();
   });
-
   async function render() {
-    const fixture = TestBed.createComponent(Landing);
-    await fixture.whenStable();
-    return { fixture, page: fixture.nativeElement as HTMLElement };
+    const harness = await RouterTestingHarness.create('/es');
+    return { harness, fixture: harness.fixture, page: harness.routeNativeElement! };
   }
 
   it('shows the team identity, exactly four services and the two product names', async () => {
     const { page } = await render();
     expect(page.querySelectorAll('h1')).toHaveLength(1);
+    expect(page.querySelector('h1')?.textContent?.trim()).toBe(
+      'Tecnología que te hace la vida más fácil.',
+    );
+    expect(page.querySelector('h1 .title-highlight')?.textContent).toBe('más fácil');
+    expect(page.querySelector('h1 script, h1 b')).toBeNull();
     expect(page.querySelector('header')?.textContent).toContain('Equipo independiente');
     expect(page.querySelectorAll('.service-card')).toHaveLength(4);
     expect(page.querySelector('#servicios')?.textContent).toContain('Mantenimiento de software');
@@ -39,12 +42,17 @@ describe('Landing content and interactions', () => {
   });
 
   it('changes visible content, accessible text, metadata and contact messages using the selector', async () => {
-    const { fixture, page } = await render();
-    const select = page.querySelector('select')!;
+    const { harness, fixture } = await render();
+    let page = harness.routeNativeElement!;
+    let select = page.querySelector('select')!;
     select.value = 'en';
     select.dispatchEvent(new Event('change'));
     await fixture.whenStable();
-    expect(page.querySelector('h1')?.textContent).toContain('Technology');
+    page = harness.routeNativeElement!;
+    expect(page.querySelector('h1')?.textContent?.trim()).toBe(
+      'Technology that makes your life easier.',
+    );
+    expect(page.querySelector('h1 .title-highlight')?.textContent).toBe('easier');
     expect(page.querySelector('img')?.alt).toContain('Shared workspace');
     expect(document.documentElement.lang).toBe('en');
     expect(document.title).toContain('Independent team');
@@ -56,11 +64,12 @@ describe('Landing content and interactions', () => {
     )!;
     expect(new URL(financeLink.href).searchParams.get('text')).toContain('Hello');
     expect(new URL(financeLink.href).searchParams.get('text')).toContain('SmartFinance PTY');
+    select = page.querySelector('select')!;
     select.value = 'es';
     select.dispatchEvent(new Event('change'));
     await fixture.whenStable();
     expect(document.documentElement.lang).toBe('es');
-    expect(page.querySelector('h1')?.textContent).toContain('Tecnología');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Tecnología');
   });
 
   it('toggles the mobile menu and closes it on navigation or Escape with focus restored', async () => {
@@ -90,8 +99,10 @@ describe('Landing content and interactions', () => {
 
   it('provides real anchor destinations and encoded WhatsApp links for every call to action', async () => {
     const { page } = await render();
-    for (const link of page.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')) {
-      expect(page.querySelector(link.getAttribute('href')!)).not.toBeNull();
+    const anchors = page.querySelectorAll<HTMLAnchorElement>('a[href^="/es#"]');
+    expect(anchors.length).toBeGreaterThan(0);
+    for (const link of anchors) {
+      expect(page.querySelector(new URL(link.href).hash)).not.toBeNull();
     }
     const links = page.querySelectorAll<HTMLAnchorElement>('a[href^="https://wa.me/"]');
     expect(links).toHaveLength(8);

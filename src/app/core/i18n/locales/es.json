@@ -1,24 +1,7 @@
 {
-  "meta": {
-    "title": "Equipo independiente | Desarrollo, formación y mantenimiento",
-    "description": "Somos un equipo de profesionales independientes. Desarrollamos software, enseñamos programación y big data y acompañamos tus proyectos."
-  },
-  "brand": {
+  "identity": {
     "name": "Equipo independiente",
-    "tagline": "Desarrollo · Formación · Mantenimiento",
     "home": "Equipo independiente — Inicio"
-  },
-  "accessibility": {
-    "skip": "Saltar al contenido",
-    "mainNavigation": "Navegación principal",
-    "footerNavigation": "Navegación del pie de página"
-  },
-  "language": {
-    "label": "Idioma",
-    "es": "Español",
-    "en": "English",
-    "esShort": "ES",
-    "enShort": "EN"
   },
   "navigation": {
     "services": "Servicios",
@@ -29,49 +12,55 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú"
   },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
   "hero": {
     "eyebrow": "Desarrollo · Formación · Mantenimiento",
-    "title": "Tecnología que te hace la vida",
-    "accent": "más fácil.",
+    "title": "Tecnología que te hace la vida más fácil.",
     "description": "Somos un equipo de profesionales independientes. Creamos software, enseñamos programación y acompañamos tus proyectos.",
     "secondary": "Explorar servicios",
-    "imageAlt": "Espacio de trabajo compartido con portátiles, plantas y luz cálida sobre una mesa de madera."
+    "imageAlt": "Espacio de trabajo compartido con portátiles, plantas y luz cálida sobre una mesa de madera.",
+    "titleHighlight": "más fácil"
   },
   "services": {
     "title": "¿En qué podemos ayudarte?",
-    "intro": "Tarifas iniciales de referencia. Confirmamos alcances y disponibilidad antes de empezar.",
+    "intro": "Tarifas iniciales de referencia. Confirmamos alcance y disponibilidad antes de empezar.",
     "tutoring": {
       "title": "Tutorías de programación y big data",
-      "description": "Te acompañamos con diagnóstico, clase en vivo, ejercicios y seguimiento.",
-      "price": "USD 30 / hora",
-      "detail": "Paquete de 4 horas: USD 120.",
-      "action": "Consultar tutorías",
-      "message": "Hola, queremos información sobre las tutorías de programación y big data."
-    },
-    "python": {
-      "title": "Curso de fundamentos de Python en vivo",
-      "description": "Enseñamos en 6 sesiones de 2 horas, con ejercicios y un proyecto final. Grupo de 4 a 6 alumnos.",
-      "price": "USD 120 / alumno",
-      "detail": "Lo lanzaremos tras validar el contenido en tutorías.",
-      "badge": "Próximamente",
-      "action": "Consultar el curso",
-      "message": "Hola, queremos información sobre el curso de fundamentos de Python en vivo."
+      "description": "Diagnóstico, clase en vivo, ejercicios y seguimiento.",
+      "price": "{{hourlyRate}} por hora",
+      "detail": "Paquete de {{packageHours}} horas: {{packagePrice}}.",
+      "action": "Consultar tutorías"
     },
     "development": {
       "title": "Desarrollo de software",
-      "description": "Desarrollamos aplicaciones web y móviles, sistemas internos, integraciones y automatizaciones.",
-      "price": "USD 50 / hora",
-      "detail": "Ejemplo: 40 horas = USD 2,000. Acordamos entregables y alcance.",
-      "action": "Cotizar un proyecto",
-      "message": "Hola, queremos conversar sobre un proyecto de desarrollo de software."
+      "description": "Aplicaciones web y móviles, sistemas internos, integraciones y automatizaciones.",
+      "price": "{{referenceHourlyRate}} por hora",
+      "detail": "Entregables y alcance acordados.",
+      "action": "Cotizar mi proyecto",
+      "example": "Ejemplo: {{exampleHours}} horas = {{examplePrice}}."
     },
     "maintenance": {
       "title": "Mantenimiento de software",
-      "description": "Acompañamos tu software con mantenimiento programado, pequeños cambios y revisiones.",
-      "price": "USD 100 / mes",
-      "detail": "Incluimos hasta 2 horas. Horas adicionales: USD 50, previa aprobación. Evaluamos el software antes de empezar.",
+      "description": "Mantenimiento programado, pequeños cambios y revisión de tu software.",
+      "price": "{{monthlyPrice}} por mes",
+      "detail": "Hasta {{includedHours}} horas incluidas.",
       "action": "Consultar mantenimiento",
-      "message": "Hola, queremos información sobre el mantenimiento de software."
+      "extraWithApproval": "Horas adicionales: {{additionalHourlyRate}} por hora, previa aprobación.",
+      "extraWithoutApproval": "Horas adicionales: {{additionalHourlyRate}} por hora.",
+      "note": "Servicio sujeto a evaluación del software."
+    },
+    "pythonCourse": {
+      "title": "Curso de Python en vivo",
+      "description": "Fundamentos de Python en {{sessions}} sesiones de {{hoursPerSession}} horas, con ejercicios y proyecto final.",
+      "price": "{{pricePerStudent}} por alumno",
+      "detail": "Se lanzará tras validar el contenido en tutorías.",
+      "badge": "Próximamente",
+      "action": "Quiero información",
+      "group": "Grupo de {{minStudents}} a {{maxStudents}} alumnos. {{totalHours}} horas en total."
     }
   },
   "applications": {
@@ -79,13 +68,11 @@
     "intro": "Conoce nuestras soluciones y consulta sus funcionalidades.",
     "finance": {
       "name": "SmartFinance PTY",
-      "action": "Consultar información de SmartFinance PTY",
-      "message": "Hola, queremos conocer las funcionalidades de SmartFinance PTY."
+      "action": "Consultar información de SmartFinance PTY"
     },
     "pos": {
       "name": "SmartPOS PTY",
-      "action": "Consultar información de SmartPOS PTY",
-      "message": "Hola, queremos conocer las funcionalidades de SmartPOS PTY."
+      "action": "Consultar información de SmartPOS PTY"
     },
     "action": "Consultar información"
   },
@@ -111,7 +98,32 @@
     "title": "¿Qué te gustaría crear o aprender?",
     "description": "Cuéntanos lo que necesitas y encontremos el siguiente paso.",
     "whatsapp": "Conversemos por WhatsApp",
-    "pending": "Pronto compartiremos nuestros canales de contacto.",
-    "message": "Hola, queremos conocer más sobre sus servicios."
+    "pending": "Pronto compartiremos nuestros canales de contacto."
+  },
+  "footer": {
+    "tagline": "Desarrollo · Formación · Mantenimiento"
+  },
+  "accessibility": {
+    "skip": "Saltar al contenido",
+    "mainNavigation": "Navegación principal",
+    "footerNavigation": "Navegación del pie de página"
+  },
+  "seo": {
+    "title": "Desarrollo, formación y mantenimiento de software | Equipo independiente",
+    "description": "Somos un equipo de profesionales independientes. Ofrecemos tutorías de programación y big data, desarrollo y mantenimiento de software. Conoce nuestro próximo curso de Python."
+  },
+  "whatsapp": {
+    "general": "Hola, me gustaría conocer más sobre los servicios de su equipo.",
+    "tutoring": "Hola, me interesan las tutorías de programación y big data. Quisiera consultar disponibilidad y cómo comenzar.",
+    "pythonCourse": "Hola, me interesa recibir información sobre el próximo curso de fundamentos de Python.",
+    "development": "Hola, tengo un proyecto y quisiera conversar sobre su alcance y solicitar una cotización.",
+    "maintenance": "Hola, quisiera consultar si pueden encargarse del mantenimiento de mi software y conocer las condiciones del servicio.",
+    "application": "Hola, me gustaría conocer más sobre {{productName}} y sus funcionalidades."
+  },
+  "errors": {
+    "unsupportedLanguage": "Ofrecemos esta página en español e inglés.",
+    "languageChange": "No pudimos cambiar el idioma. Podemos intentarlo de nuevo.",
+    "preferenceStorage": "Cambiamos el idioma, pero no pudimos guardar la preferencia en este navegador.",
+    "contactUnavailable": "No podemos abrir el contacto en este momento. Intentémoslo más tarde."
   }
 }

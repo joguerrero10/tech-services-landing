@@ -81,3 +81,5 @@ Dimensiones intrínsecas en píxeles para raster; viewBox para SVG. Pesos exacto
 | `docs/assets/originals/contact-leaves.png` | PNG          | 2172 × 724                         | 1548099 |
 | `docs/assets/originals/team-workspace.png` | PNG          | 1374 × 1145                        | 2025713 |
 | `public/favicon.ico`                       | ICO          | 16 × 16, 32 × 32, 48 × 48, 64 × 64 |    7367 |
+
+El SVG genérico `laptop.svg`, no utilizado, se conserva en `docs/assets/originals/icons/` y se excluye de los recursos públicos. La landing usa `laptop-code.svg`.

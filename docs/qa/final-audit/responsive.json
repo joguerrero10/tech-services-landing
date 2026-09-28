@@ -1,0 +1,142 @@
+[
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 220.828125,
+        "loaded": true,
+        "width": 265
+      }
+    ],
+    "lang": "en",
+    "overflow": false,
+    "serviceColumns": "265px",
+    "width": 320
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 274.15625,
+        "loaded": true,
+        "width": 329
+      }
+    ],
+    "lang": "en",
+    "overflow": false,
+    "serviceColumns": "329px",
+    "width": 384
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 273.75,
+        "loaded": true,
+        "width": 328.5
+      }
+    ],
+    "lang": "en",
+    "overflow": false,
+    "serviceColumns": "344.5px 344.5px",
+    "width": 768
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 373.75,
+        "loaded": true,
+        "width": 448.5
+      }
+    ],
+    "lang": "en",
+    "overflow": false,
+    "serviceColumns": "472.5px 472.5px",
+    "width": 1024
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 513.328125,
+        "loaded": true,
+        "width": 616
+      }
+    ],
+    "lang": "en",
+    "overflow": false,
+    "serviceColumns": "640px 640px",
+    "width": 1440
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 220.828125,
+        "loaded": true,
+        "width": 265
+      }
+    ],
+    "lang": "es",
+    "overflow": false,
+    "serviceColumns": "265px",
+    "width": 320
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 274.15625,
+        "loaded": true,
+        "width": 329
+      }
+    ],
+    "lang": "es",
+    "overflow": false,
+    "serviceColumns": "329px",
+    "width": 384
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 273.75,
+        "loaded": true,
+        "width": 328.5
+      }
+    ],
+    "lang": "es",
+    "overflow": false,
+    "serviceColumns": "344.5px 344.5px",
+    "width": 768
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 373.75,
+        "loaded": true,
+        "width": 448.5
+      }
+    ],
+    "lang": "es",
+    "overflow": false,
+    "serviceColumns": "472.5px 472.5px",
+    "width": 1024
+  },
+  {
+    "clipped": [],
+    "images": [
+      {
+        "height": 513.328125,
+        "loaded": true,
+        "width": 616
+      }
+    ],
+    "lang": "es",
+    "overflow": false,
+    "serviceColumns": "640px 640px",
+    "width": 1440
+  }
+]
