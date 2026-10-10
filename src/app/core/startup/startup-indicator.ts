@@ -1,4 +1,6 @@
-/** Browser-only enhancement. Prerendered content is never hidden or made inert. */
+export const STARTUP_SKIP_EVENT = 'startup:skip';
+
+/** Browser-only introduction. Without JavaScript, prerendered content stays visible. */
 export function startStartupIndicator(document: Document): { ready(): void; fail(): void } {
   const view = document.defaultView;
   const inactive = { ready() {}, fail() {} };
@@ -15,16 +17,20 @@ export function startStartupIndicator(document: Document): { ready(): void; fail
     if (motion?.matches) finish();
   };
   const finish = () => {
+    const restoreFocus = document.activeElement?.closest('app-startup-loader');
     complete = true;
     root.removeAttribute('data-startup');
     clearTimeout(safetyTimer);
     clearTimeout(minimumTimer);
     clearTimeout(exitTimer);
     motion?.removeEventListener?.('change', onMotionChange);
+    document.removeEventListener(STARTUP_SKIP_EVENT, finish);
+    if (restoreFocus) document.getElementById('contenido')?.focus({ preventScroll: true });
   };
   // A failed or stalled bootstrap cannot strand the user in a loading state.
-  const safetyTimer = setTimeout(finish, 4000);
+  const safetyTimer = setTimeout(finish, 8000);
   root.setAttribute('data-startup', 'loading');
+  document.addEventListener(STARTUP_SKIP_EVENT, finish);
   motion?.addEventListener?.('change', onMotionChange);
 
   return {
@@ -34,9 +40,9 @@ export function startStartupIndicator(document: Document): { ready(): void; fail
       minimumTimer = setTimeout(
         () => {
           root.setAttribute('data-startup', 'leaving');
-          exitTimer = setTimeout(finish, 180);
+          exitTimer = setTimeout(finish, 420);
         },
-        Math.max(0, 800 - (Date.now() - started)),
+        Math.max(0, 5000 - (Date.now() - started)),
       );
     },
     fail: finish,

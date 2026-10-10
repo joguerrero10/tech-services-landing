@@ -1,7 +1,8 @@
 {
   "identity": {
     "name": "Equipo independiente",
-    "home": "Equipo independiente — Inicio"
+    "home": "Equipo independiente — Inicio",
+    "startupTitle": "Damos vida a tus ideas."
   },
   "navigation": {
     "services": "Servicios",
@@ -107,7 +108,8 @@
     "skip": "Saltar al contenido",
     "mainNavigation": "Navegación principal",
     "footerNavigation": "Navegación del pie de página",
-    "startup": "Preparando la experiencia…"
+    "startup": "Preparando la experiencia…",
+    "skipStartup": "Saltar introducción"
   },
   "seo": {
     "title": "Desarrollo, formación y mantenimiento de software | Equipo independiente",

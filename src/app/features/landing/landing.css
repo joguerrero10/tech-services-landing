@@ -1,3 +1,9 @@
 :host {
   display: block;
 }
+/* Only hide the page while the browser introduction is active. SSR stays visible. */
+@media (prefers-reduced-motion: no-preference) {
+  :host-context(html[data-startup]) .landing-content {
+    display: none;
+  }
+}

@@ -117,9 +117,13 @@ Para repetir el ensayo de texto aumentado y sin JavaScript, iniciar `npm run ser
 
 ## Loading inicial
 
-`StartupLoader` muestra una franja responsive con símbolo de código, puntos terracota y estado traducido. Se activa desde `main.ts` al arrancar en el navegador y no oculta ni bloquea el contenido prerenderizado. Permanece un mínimo de 800ms para evitar destellos y sale en 180ms tras estabilizar Angular. Un error o límite de 4 segundos lo retira; no representa un porcentaje de descarga. Se omite con movimiento reducido y no se repite al cambiar de idioma dentro de la landing. Su retirada libera el espacio vertical de la franja, sin overlay ni posicionamiento absoluto.
+`StartupLoader` presenta una introducción de pantalla completa: fondo verde bosque, órbitas SVG, símbolo de código que se dibuja, título traducido y una línea que acompaña los cinco segundos de introducción. La línea es decorativa y no representa el progreso de una descarga. La salida dura 420ms. El contenido de la landing aparece después; el botón «Saltar introducción» y Escape permiten entrar antes. Si el foco estaba en la introducción, se traslada al contenido al cerrarla.
 
-Archivos: `core/startup/startup-indicator.ts` para el ciclo de vida y `shared/components/startup-loader/` para presentación. Texto en `accessibility.startup` de ambos diccionarios. Pruebas de cierre normal, error, tiempo límite y movimiento reducido en `startup-indicator.spec.ts`.
+La pantalla usa Grid en el flujo normal, sin overlays ni posicionamiento. Su única medida de viewport es `min-block-size: 100svh`, necesaria para cubrir la pantalla móvil sin depender de las barras del navegador; crece con texto aumentado y pantallas bajas. Tipografía, espacios y controles usan rem. El SVG usa coordenadas intrínsecas sin unidad.
+
+Solo se oculta temporalmente la landing cuando JavaScript activa la introducción y no se solicita movimiento reducido. El HTML prerenderizado permanece disponible sin JavaScript. Un error retira la introducción inmediatamente y un límite de 8 segundos evita bloquear la página si el arranque no termina. No se repite al cambiar de idioma. Con movimiento reducido se muestra directamente la landing.
+
+Archivos: `core/startup/startup-indicator.ts` gestiona tiempos, cierre y foco; `shared/components/startup-loader/` contiene la presentación; `features/landing/landing.css` controla la visibilidad. Textos en `identity.startupTitle`, `accessibility.startup` y `accessibility.skipStartup` de ambos diccionarios. Pruebas de duración, salto con foco, error, tiempo límite y movimiento reducido en `startup-indicator.spec.ts`.
 
 ## GitHub Pages
 

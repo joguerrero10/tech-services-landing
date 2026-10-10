@@ -1,7 +1,8 @@
 {
   "identity": {
     "name": "Independent team",
-    "home": "Independent team — Home"
+    "home": "Independent team — Home",
+    "startupTitle": "We bring your ideas to life."
   },
   "navigation": {
     "services": "Services",
@@ -107,7 +108,8 @@
     "skip": "Skip to content",
     "mainNavigation": "Main navigation",
     "footerNavigation": "Footer navigation",
-    "startup": "Preparing your experience…"
+    "startup": "Preparing your experience…",
+    "skipStartup": "Skip introduction"
   },
   "seo": {
     "title": "Software development, training and maintenance | Independent team",
