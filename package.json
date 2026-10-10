@@ -21,7 +21,8 @@
     "serve:static": "node scripts/serve-static.mjs",
     "test:seo": "node --test scripts/seo-files.test.mjs",
     "check:public": "node scripts/check-public.mjs",
-    "build:pages": "ng build --base-href /tech-services-landing/ && SEO_ENV=production node scripts/generate-seo.mjs"
+    "build:pages": "ng build --base-href /tech-services-landing/ && SEO_ENV=production node scripts/generate-seo.mjs",
+    "check:pages": "EXPECTED_BASE_HREF=/tech-services-landing/ node scripts/check-prerender.mjs && npm run check:public"
   },
   "private": true,
   "packageManager": "npm@12.0.2",

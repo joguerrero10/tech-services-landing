@@ -4,12 +4,26 @@ import { JSDOM } from 'jsdom';
 import { SITE_SETTINGS } from '../src/app/core/config/site-settings.ts';
 import { publicOrigin } from '../src/app/core/config/public-origin.ts';
 const base = 'dist/tech-services-landing/browser';
+const expectedBaseHref = process.env.EXPECTED_BASE_HREF;
 const normalize = (text) => text.replace(/\s+/g, ' ').trim();
 for (const lang of SITE_SETTINGS.supportedLocales) {
   const dictionary = JSON.parse(await readFile(`src/app/core/i18n/locales/${lang}.json`, 'utf8'));
   const html = await readFile(`${base}/${lang}/index.html`, 'utf8');
   const dom = new JSDOM(html);
   const doc = dom.window.document;
+  if (expectedBaseHref) {
+    assert.equal(
+      doc.querySelector('base')?.getAttribute('href'),
+      expectedBaseHref,
+      `${lang}: deployment base must preserve the repository path`,
+    );
+    for (const link of doc.querySelectorAll('a[href^="/"]')) {
+      assert.ok(
+        link.getAttribute('href').startsWith(expectedBaseHref),
+        `Navigation escapes deployment path: ${link.getAttribute('href')}`,
+      );
+    }
+  }
   assert.equal(doc.documentElement.lang, lang);
   assert.equal(
     doc.querySelector('select').value,
@@ -66,7 +80,14 @@ for (const lang of SITE_SETTINGS.supportedLocales) {
   );
 }
 const root = await readFile(`${base}/index.html`, 'utf8');
-const baseHref = new JSDOM(root).window.document.querySelector('base').getAttribute('href');
-assert.ok(root.includes(`url=${baseHref}es`));
-assert.equal(new JSDOM(root).window.document.querySelectorAll('#servicios article').length, 4);
-console.log('Root: localized content and static redirect to /es verified.');
+const rootDom = new JSDOM(root);
+const baseHref = rootDom.window.document.querySelector('base').getAttribute('href');
+if (expectedBaseHref) assert.equal(baseHref, expectedBaseHref);
+const defaultPath = SITE_SETTINGS.locales[SITE_SETTINGS.defaultLocale].path;
+assert.equal(
+  rootDom.window.document.querySelector('meta[http-equiv="refresh"]')?.content,
+  `0; url=${baseHref}${defaultPath}`,
+);
+assert.equal(rootDom.window.document.querySelectorAll('#servicios article').length, 4);
+rootDom.window.close();
+console.log(`Root: localized content and static redirect to ${baseHref}${defaultPath} verified.`);

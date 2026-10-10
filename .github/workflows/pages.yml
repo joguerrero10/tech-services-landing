@@ -1,5 +1,7 @@
 name: Deploy landing to GitHub Pages
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,8 +22,7 @@ jobs:
       - run: npm run check:i18n
       - run: npm run check:styles
       - run: npm run build:pages
-      - run: npm run check:prerender
-      - run: npm run check:public
+      - run: npm run check:pages
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/tech-services-landing/browser

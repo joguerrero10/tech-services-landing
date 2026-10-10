@@ -27,7 +27,7 @@ npm run format:check
 
 `check:assets` informa un pendiente real: falta la fotografía de 1440 × 1200 porque el generador no entregó suficiente resolución nativa; no se ha ampliado artificialmente ni se referencia ese archivo inexistente. Ver `docs/assets.md`.
 
-El build se genera en `dist/tech-services-landing/browser`. No hay backend, autenticación, base de datos ni configuración de despliegue. `npm run format` aplica Prettier. No se configura ESLint en esta etapa; tipos, compilación Angular y comprobación CSS cubren las verificaciones disponibles.
+El build se genera en `dist/tech-services-landing/browser`. No hay backend, autenticación ni base de datos. El despliegue estático usa GitHub Actions. `npm run format` aplica Prettier. No se configura ESLint en esta etapa; tipos, compilación Angular y comprobación CSS cubren las verificaciones disponibles.
 
 ## Organización y edición
 
@@ -54,7 +54,7 @@ Sistema visual: [tokens, componentes y contraste](docs/design-system.md). Ejecut
 La fuente central de datos es `src/app/core/config/site-settings.ts`, expuesta con tipos e inyección por `site.config.ts`:
 
 - `whatsappNumber`: `50768702316`, confirmado por el usuario. Se valida como 8–15 dígitos internacionales sin `+`, espacios ni signos. La validación no comprueba la existencia de una cuenta.
-- `publicSiteUrl`: **null, pendiente del dominio real**. No se genera un dominio ni se usa localhost como URL pública.
+- `publicSiteUrl`: `https://joguerrero10.github.io/tech-services-landing`, URL pública del repositorio en GitHub Pages.
 - `supportedLocales`: español e inglés; `defaultLocale`: español. Mapeo de rutas, formatos y etiquetas en la misma configuración.
 - `products`: identificadores `finance` y `pos` y claves i18n de los nombres públicos SmartFinance PTY y SmartPOS PTY. No se configuran prestaciones ni enlaces no confirmados.
 
@@ -68,7 +68,7 @@ El salto al contenido es siempre visible y compacto. El menú móvil se abre den
 
 `npm run build` genera `/`, `/es` y `/en` en `dist/tech-services-landing/browser`, con contenido completo e hidratación. `npm run check:prerender` comprueba los HTML reales. `npm run serve:static` los sirve en `http://127.0.0.1:4300` sin fallback SPA.
 
-La compilación normal es una vista previa: `noindex` y `robots.txt` bloquean indexación. Cuando exista el dominio real, configurar `publicSiteUrl` en `site-settings.ts` y ejecutar `npm run build:production`: habilita el sitemap y robots de producción. Sin dominio se mantiene el bloqueo y se omiten URLs públicas, incluso en producción. No se ha desplegado.
+La compilación normal es una vista previa: `noindex` y `robots.txt` bloquean indexación. Para servir desde una raíz de dominio, configurar `publicSiteUrl` en `site-settings.ts` y ejecutar `npm run build:production`: habilita el sitemap y robots de producción. Sin dominio se mantiene el bloqueo y se omiten URLs públicas, incluso en producción. Para la subruta de GitHub Pages, usar `build:pages` como se indica abajo.
 
 Configuración, comprobaciones y límites: [SEO y prerender](docs/seo-prerender.md).
 
@@ -92,7 +92,7 @@ Los identificadores `finance` y `pos` permanecen estables en `site-settings.ts`.
 
 ### Teléfono y dominio
 
-Editar `whatsappNumber` y `publicSiteUrl` en `core/config/site-settings.ts`. El teléfono actual fue proporcionado por el usuario. Para retirar el contacto usar null. El dominio debe ser un origen raíz HTTPS real, sin ruta, credenciales, query ni fragmento; sigue pendiente. Tras cambiarlo, reconstruir y revisar canonical/hreflang, sitemap y robots en la salida. No editar directamente dist.
+Editar `whatsappNumber` y `publicSiteUrl` en `core/config/site-settings.ts`. El teléfono actual fue proporcionado por el usuario. Para retirar el contacto usar null. La URL debe ser HTTPS real, sin credenciales, query ni fragmento; puede incluir la subruta del repositorio. Actualmente apunta a GitHub Pages. Tras cambiarlo, reconstruir y revisar canonical/hreflang, sitemap y robots en la salida. No editar directamente dist.
 
 ## Revisión final reproducible
 
@@ -120,3 +120,19 @@ Para repetir el ensayo de texto aumentado y sin JavaScript, iniciar `npm run ser
 `StartupLoader` muestra una franja responsive con símbolo de código, puntos terracota y estado traducido. Se activa desde `main.ts` al arrancar en el navegador y no oculta ni bloquea el contenido prerenderizado. Permanece un mínimo de 800ms para evitar destellos y sale en 180ms tras estabilizar Angular. Un error o límite de 4 segundos lo retira; no representa un porcentaje de descarga. Se omite con movimiento reducido y no se repite al cambiar de idioma dentro de la landing. Su retirada libera el espacio vertical de la franja, sin overlay ni posicionamiento absoluto.
 
 Archivos: `core/startup/startup-indicator.ts` para el ciclo de vida y `shared/components/startup-loader/` para presentación. Texto en `accessibility.startup` de ambos diccionarios. Pruebas de cierre normal, error, tiempo límite y movimiento reducido en `startup-indicator.spec.ts`.
+
+## GitHub Pages
+
+El único workflow es `.github/workflows/pages.yml`: se ejecuta al hacer push a `main` o manualmente desde Actions. En Settings → Pages, seleccionar **GitHub Actions** como origen. Usa Node 24, ejecuta las pruebas, compila y valida los HTML antes de publicar.
+
+```bash
+npm run build:pages
+npm run check:pages
+BASE_PATH=/tech-services-landing npm run serve:static
+```
+
+Abrir `http://127.0.0.1:4300/tech-services-landing/` para comprobar localmente la redirección, `/tech-services-landing/es/` y `/tech-services-landing/en/`. La URL pública es <https://joguerrero10.github.io/tech-services-landing/>; la raíz redirige a `/tech-services-landing/es`.
+
+Usar `build:pages`, que pasa `--base-href` directamente a Angular. No usar `npm run build -- --base-href ...`: como `build` contiene dos comandos, npm entrega esos argumentos al generador SEO y Angular compila con base `/`, provocando la redirección errónea a `/es`. `check:pages` exige el prefijo en los HTML de ambos idiomas, navegación y redirección raíz, además de comprobar recursos locales. Al cambiar de repositorio, actualizar también el prefijo en `build:pages`, `check:pages` y `publicSiteUrl`.
+
+Para publicar estos cambios, hacer commit y push a `main`, y esperar que finalice **Deploy landing to GitHub Pages** en Actions. La compilación local no actualiza la web publicada.
