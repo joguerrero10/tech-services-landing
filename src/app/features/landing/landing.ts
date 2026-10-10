@@ -1,3 +1,4 @@
+import { StartupLoader } from '../../shared/components/startup-loader/startup-loader';
 import { RouterLink } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Hero } from './components/hero/hero';
@@ -11,6 +12,7 @@ import { Footer } from '../../shared/components/footer/footer';
 @Component({
   selector: 'app-landing',
   imports: [
+    StartupLoader,
     RouterLink,
     TranslatePipe,
     Header,

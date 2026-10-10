@@ -106,7 +106,8 @@
   "accessibility": {
     "skip": "Skip to content",
     "mainNavigation": "Main navigation",
-    "footerNavigation": "Footer navigation"
+    "footerNavigation": "Footer navigation",
+    "startup": "Preparing your experience…"
   },
   "seo": {
     "title": "Software development, training and maintenance | Independent team",

@@ -114,3 +114,9 @@ npm run format:check
 `check:assets` permanece deliberadamente en error por el recurso pendiente de 1440 píxeles; no se oculta ese resultado. Los archivos usados por la landing son válidos. Informe y evidencias de la revisión completa: [auditoría final](docs/final-audit.md).
 
 Para repetir el ensayo de texto aumentado y sin JavaScript, iniciar `npm run serve:static` y, en otra terminal, `node scripts/serve-audit.mjs`. Las URLs `http://127.0.0.1:4301/es?audit=text-200` y `http://127.0.0.1:4301/en?audit=no-js` son fixtures locales: no se publican ni forman parte de dist. El ensayo de texto al 200% no equivale a manipular el zoom nativo del navegador.
+
+## Loading inicial
+
+`StartupLoader` muestra una franja responsive con símbolo de código, puntos terracota y estado traducido. Se activa desde `main.ts` al arrancar en el navegador y no oculta ni bloquea el contenido prerenderizado. Permanece un mínimo de 800ms para evitar destellos y sale en 180ms tras estabilizar Angular. Un error o límite de 4 segundos lo retira; no representa un porcentaje de descarga. Se omite con movimiento reducido y no se repite al cambiar de idioma dentro de la landing. Su retirada libera el espacio vertical de la franja, sin overlay ni posicionamiento absoluto.
+
+Archivos: `core/startup/startup-indicator.ts` para el ciclo de vida y `shared/components/startup-loader/` para presentación. Texto en `accessibility.startup` de ambos diccionarios. Pruebas de cierre normal, error, tiempo límite y movimiento reducido en `startup-indicator.spec.ts`.

@@ -106,7 +106,8 @@
   "accessibility": {
     "skip": "Saltar al contenido",
     "mainNavigation": "Navegación principal",
-    "footerNavigation": "Navegación del pie de página"
+    "footerNavigation": "Navegación del pie de página",
+    "startup": "Preparando la experiencia…"
   },
   "seo": {
     "title": "Desarrollo, formación y mantenimiento de software | Equipo independiente",
