@@ -5,7 +5,10 @@ import { SITE_SETTINGS } from './site-settings';
 
 export const SITE_CONFIG = SITE_SETTINGS satisfies {
   locales: Record<string, { labelKey: TranslationKey }>;
-  products: Record<string, { nameKey: TranslationKey }>;
+  products: Record<
+    string,
+    { nameKey: TranslationKey; status: 'published' | 'development' | 'unpublished' }
+  >;
 };
 
 export type ProductId = keyof typeof SITE_CONFIG.products;

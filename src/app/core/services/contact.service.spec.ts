@@ -28,12 +28,19 @@ describe('ContactService', () => {
     const translate = TestBed.inject(TranslateService);
     const inquiries: ContactInquiry[] = [
       { kind: 'general' },
-      { kind: 'service', serviceId: 'tutoring' },
-      { kind: 'service', serviceId: 'python-course' },
-      { kind: 'service', serviceId: 'development' },
-      { kind: 'service', serviceId: 'maintenance' },
+      { kind: 'service', serviceId: 'landing-page' },
+      { kind: 'service', serviceId: 'website' },
+      { kind: 'service', serviceId: 'online-store' },
+      { kind: 'service', serviceId: 'automation' },
+      { kind: 'service', serviceId: 'custom-system' },
+      { kind: 'service', serviceId: 'maintenance-basic' },
+      { kind: 'service', serviceId: 'maintenance-support' },
       { kind: 'product', productId: 'finance' },
       { kind: 'product', productId: 'pos' },
+      { kind: 'product', productId: 'omnisphere' },
+      { kind: 'product', productId: 'helpdesk' },
+      { kind: 'product', productId: 'world-cup' },
+      { kind: 'product', productId: 'black-ninja' },
     ];
     for (const language of ['es', 'en']) {
       await firstValueFrom(translate.use(language));
@@ -45,24 +52,31 @@ describe('ContactService', () => {
         expect(url.pathname).toBe('/' + SITE_CONFIG.whatsappNumber);
         return url.searchParams.get('text')!;
       });
-      expect(new Set(messages).size).toBe(7);
+      expect(new Set(messages).size).toBe(14);
       expect(
         messages.every((message) => message.startsWith(language === 'es' ? 'Hola,' : 'Hello,')),
       ).toBe(true);
-      expect(messages[5]).toContain('SmartFinance PTY');
-      expect(messages[6]).toContain('SmartPOS PTY');
+      expect(messages[8]).toContain('SmartFinance PTY');
+      expect(messages[9]).toContain('SmartPOS PTY');
+      expect(messages[10]).toContain('OmniSphere AI');
+      expect(messages[11]).toContain('Helpdesk AI Automation');
+      expect(messages[12]).toContain('World Cup Predictor AI');
+      expect(messages[13]).toContain('Black Ninja');
+
       expect(messages.join('')).not.toMatch(/{{|whatsapp\./);
       if (language === 'es')
-        expect(messages[0]).toBe('Hola, me gustaría conocer más sobre los servicios de su equipo.');
+        expect(messages[0]).toBe(
+          'Hola, Tech Together. Me gustaría conocer más sobre los servicios de Tech Together.',
+        );
     }
   });
 
   it('encodes messages without changing the configured destination', () => {
     const service = TestBed.inject(ContactService);
-    const url = new URL(service.whatsappUrl('Hola & Python + big data?')!);
+    const url = new URL(service.whatsappUrl('Hola & catálogo + pagos?')!);
     expect(url.origin).toBe('https://wa.me');
     expect(url.pathname).toBe('/50768702316');
-    expect(url.searchParams.get('text')).toBe('Hola & Python + big data?');
+    expect(url.searchParams.get('text')).toBe('Hola & catálogo + pagos?');
     expect([...url.searchParams.keys()]).toEqual(['text']);
   });
   it('does not invent a destination when no contact is configured', () => {

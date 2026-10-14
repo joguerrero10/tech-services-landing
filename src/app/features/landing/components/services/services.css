@@ -48,7 +48,8 @@ h3 {
   .service-card:nth-child(even) {
     padding-right: 0;
   }
-  .service-card:nth-last-child(-n + 2) {
+  .service-card:last-child,
+  .service-card:nth-last-child(2):nth-child(odd) {
     border-bottom: 0;
   }
 }

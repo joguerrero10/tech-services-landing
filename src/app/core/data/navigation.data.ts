@@ -6,6 +6,7 @@ interface NavigationItem {
 export const NAVIGATION = [
   { fragment: 'servicios', label: 'navigation.services' },
   { fragment: 'aplicaciones', label: 'navigation.applications' },
+  { fragment: 'sobre-nosotros', label: 'navigation.about' },
   { fragment: 'proceso', label: 'navigation.process' },
 ] as const satisfies readonly NavigationItem[];
 export const FOOTER_NAVIGATION = [

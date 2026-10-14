@@ -22,23 +22,54 @@ describe('Landing content and interactions', () => {
     return { harness, fixture: harness.fixture, page: harness.routeNativeElement! };
   }
 
-  it('shows the team identity, exactly four services and the two product names', async () => {
+  it('shows the Tech Together identity, seven service packages and six project names', async () => {
     const { page } = await render();
     expect(page.querySelectorAll('h1')).toHaveLength(1);
     expect(page.querySelector('h1')?.textContent?.trim()).toBe(
-      'Tecnología que te hace la vida más fácil.',
+      'Software a medida para negocios en Panamá.',
     );
-    expect(page.querySelector('h1 .title-highlight')?.textContent).toBe('más fácil');
+    expect(page.querySelector('h1 .title-highlight')?.textContent).toBe('negocios en Panamá');
     expect(page.querySelector('h1 script, h1 b')).toBeNull();
-    expect(page.querySelector('header')?.textContent).toContain('Equipo independiente');
-    expect(page.querySelectorAll('.service-card')).toHaveLength(4);
-    expect(page.querySelector('#servicios')?.textContent).toContain('Mantenimiento de software');
-    expect(page.querySelectorAll('.application-card h3').length).toBe(2);
+    expect(page.querySelector('header')?.textContent).toContain('Tech Together');
+    expect(page.querySelectorAll('.service-card')).toHaveLength(7);
+    expect(page.querySelector('#servicios')?.textContent).toContain('Mantenimiento Plan Soporte');
+    expect(page.querySelectorAll('.application-card h3').length).toBe(6);
+    expect(page.querySelectorAll('.application-card li')).toHaveLength(18);
+    expect(page.querySelectorAll('.application-card img')).toHaveLength(6);
+    expect(
+      [...page.querySelectorAll('.project-status')].map((node) => node.textContent?.trim()),
+    ).toEqual([
+      'Publicado',
+      'En desarrollo',
+      'En desarrollo',
+      'Sin publicar',
+      'Sin publicar',
+      'Sin publicar',
+    ]);
+    expect(page.querySelectorAll('.project-scope')).toHaveLength(2);
+    for (const image of page.querySelectorAll<HTMLImageElement>('.application-card img')) {
+      expect(image.srcset).toContain('480w');
+      expect(image.srcset).toContain('960w');
+      expect(image.alt).toContain('Ilustración conceptual');
+    }
+    expect(page.querySelector('#sobre-nosotros')?.textContent).toContain(
+      'Somos un grupo de programadores en Panamá',
+    );
+    expect(
+      [...page.querySelectorAll('main > *')].map((element) => element.tagName.toLowerCase()),
+    ).toEqual([
+      'app-hero',
+      'app-services',
+      'app-applications',
+      'app-about',
+      'app-process',
+      'app-contact',
+    ]);
+    expect(page.querySelector('#servicios')?.textContent).toContain('Desde $250');
+    expect(page.querySelector('#servicios')?.textContent).toContain('Desde $1,200');
     expect(page.querySelector('#aplicaciones')?.textContent).toContain('SmartFinance PTY');
     expect(page.querySelector('#aplicaciones')?.textContent).toContain('SmartPOS PTY');
-    expect(page.textContent).not.toMatch(
-      /SmartNova|Smart\s?Academy|Joel\.|soporte técnico a domicilio/i,
-    );
+    expect(page.textContent).not.toMatch(/{{|services\./);
   });
 
   it('changes visible content, accessible text, metadata and contact messages using the selector', async () => {
@@ -50,14 +81,24 @@ describe('Landing content and interactions', () => {
     await fixture.whenStable();
     page = harness.routeNativeElement!;
     expect(page.querySelector('h1')?.textContent?.trim()).toBe(
-      'Technology that makes your life easier.',
+      'Custom software for businesses in Panama.',
     );
-    expect(page.querySelector('h1 .title-highlight')?.textContent).toBe('easier');
+    expect(page.querySelector('h1 .title-highlight')?.textContent).toBe('businesses in Panama');
     expect(page.querySelector('img')?.alt).toContain('Shared workspace');
     expect(document.documentElement.lang).toBe('en');
-    expect(document.title).toContain('Independent team');
+    expect(
+      [...page.querySelectorAll('.project-status')].map((node) => node.textContent?.trim()),
+    ).toEqual([
+      'Published',
+      'In development',
+      'In development',
+      'Not published',
+      'Not published',
+      'Not published',
+    ]);
+    expect(document.title).toContain('Tech Together');
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain(
-      'We are a team',
+      'We are Tech Together',
     );
     const financeLink = page.querySelector<HTMLAnchorElement>(
       'a[aria-label="Request information about SmartFinance PTY"]',
@@ -69,7 +110,9 @@ describe('Landing content and interactions', () => {
     select.dispatchEvent(new Event('change'));
     await fixture.whenStable();
     expect(document.documentElement.lang).toBe('es');
-    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Tecnología');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(
+      'Software a medida',
+    );
   });
 
   it('toggles the mobile menu and closes it on navigation or Escape with focus restored', async () => {
@@ -105,17 +148,17 @@ describe('Landing content and interactions', () => {
       expect(page.querySelector(new URL(link.href).hash)).not.toBeNull();
     }
     const links = page.querySelectorAll<HTMLAnchorElement>('a[href^="https://wa.me/"]');
-    expect(links).toHaveLength(8);
+    expect(links).toHaveLength(15);
     for (const link of links) {
       const url = new URL(link.href);
       expect(url.pathname).toBe('/50768702316');
-      expect(url.searchParams.get('text')).toMatch(/^Hola,/);
+      expect(url.searchParams.get('text')).toMatch(/^Hola, Tech Together\./);
     }
     expect(
       new Set(
         [...page.querySelectorAll<HTMLAnchorElement>('.service-card a')].map((link) => link.href),
       ).size,
-    ).toBe(4);
+    ).toBe(7);
     expect(page.querySelector('main')?.getAttribute('tabindex')).toBe('-1');
   });
 });

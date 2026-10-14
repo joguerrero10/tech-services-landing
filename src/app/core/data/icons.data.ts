@@ -1,6 +1,6 @@
 export const ICON_NAMES = [
   'arrow-right',
-  'book-open',
+  'tt-mark',
   'calculator',
   'code-xml',
   'laptop-code',

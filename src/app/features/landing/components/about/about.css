@@ -1,0 +1,64 @@
+@reference '../../../../../styles.css';
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-media);
+}
+.about-copy {
+  min-width: 0;
+}
+p {
+  color: var(--color-text-muted);
+}
+h3 {
+  margin: 1.5rem 0 0;
+  font-size: var(--text-card);
+  line-height: var(--text-card--line-height);
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+.technology-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 1rem 1.5rem;
+}
+.technology-list li {
+  padding: 0.375rem 0.75rem;
+  border: var(--border-fine) solid var(--color-divider);
+  border-radius: var(--radius-control);
+  font-size: var(--text-small);
+  color: var(--color-primary);
+}
+.value-list {
+  display: grid;
+  gap: 0.5rem;
+}
+.value-list li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+.value-list span {
+  color: var(--color-accent);
+}
+a {
+  margin-top: 1rem;
+}
+@variant md {
+  .about-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 3rem;
+  }
+}

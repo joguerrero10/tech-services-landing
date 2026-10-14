@@ -18,7 +18,15 @@ for (const file of await files('src')) {
   if (file.endsWith('.css')) {
     const root = postcss.parse(source, { from: file });
     root.walkDecls((decl) => {
-      if (decl.prop === 'position' && /^(absolute|relative|fixed|sticky)$/.test(decl.value))
+      const accessibleSkipLink =
+        file === 'src/styles.css' &&
+        decl.parent.selector === '.skip-link' &&
+        decl.value === 'absolute';
+      if (
+        decl.prop === 'position' &&
+        /^(absolute|relative|fixed|sticky)$/.test(decl.value) &&
+        !accessibleSkipLink
+      )
         violations.push(`${file}: forbidden positioning`);
       if (/\d(?:px|vw|vh|vmin|vmax|pt)\b/.test(decl.value))
         violations.push(`${file}: non-relative dimension ${decl.prop}: ${decl.value}`);
@@ -33,4 +41,7 @@ for (const file of await files('src')) {
 if (violations.length) {
   console.error(violations.join('\n'));
   process.exitCode = 1;
-} else console.log('Styles verified: normal flow, relative units and breakpoints.');
+} else
+  console.log(
+    'Styles verified: normal flow (accessible skip-link exception), relative units and breakpoints.',
+  );

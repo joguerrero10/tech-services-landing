@@ -30,9 +30,11 @@ describe('Locale routes', () => {
   it('renders direct English entry with matching document language and SEO before showing the page', async () => {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, 'es');
     const harness = await RouterTestingHarness.create('/en');
-    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Technology');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(
+      'Custom software',
+    );
     expect(document.documentElement.lang).toBe('en');
-    expect(document.title).toContain('Independent team');
+    expect(document.title).toContain('Tech Together');
     expect(harness.routeNativeElement?.textContent).not.toMatch(/hero\.title|{{/);
   });
   it('redirects root and invalid paths to Spanish regardless of stored preference', async () => {
@@ -42,7 +44,7 @@ describe('Locale routes', () => {
       await harness.navigateByUrl(path, Landing);
       expect(TestBed.inject(Router).url).toBe('/es');
       expect(document.documentElement.lang).toBe('es');
-      expect(harness.routeNativeElement?.querySelectorAll('.service-card')).toHaveLength(4);
+      expect(harness.routeNativeElement?.querySelectorAll('.service-card')).toHaveLength(7);
     }
   });
   it('preserves the fragment and saves language selection without overriding explicit routes', async () => {
@@ -81,7 +83,9 @@ describe('Locale routes', () => {
       throw new Error('Browser only');
     });
     const harness = await RouterTestingHarness.create('/en');
-    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Technology');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(
+      'Custom software',
+    );
     expect(storage).not.toHaveBeenCalled();
   });
 });

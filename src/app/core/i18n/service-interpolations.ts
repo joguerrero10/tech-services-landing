@@ -8,38 +8,23 @@ export function serviceInterpolations(
   const formatter = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: 'USD',
-    currencyDisplay: 'code',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    currencyDisplay: 'narrowSymbol',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   });
-  const money = (amount: number) => formatter.format(amount);
-  const tutoring = config.tutoring;
-  const course = config['python-course'];
-  const development = config.development;
-  const maintenance = config.maintenance;
-  return {
-    tutoring: {
-      hourlyRate: money(tutoring.hourlyRate),
-      packageHours: tutoring.packageHours,
-      packagePrice: money(tutoring.packagePrice),
-    },
-    'python-course': {
-      pricePerStudent: money(course.pricePerStudent),
-      sessions: course.sessions,
-      hoursPerSession: course.hoursPerSession,
-      totalHours: course.sessions * course.hoursPerSession,
-      minStudents: course.minStudents,
-      maxStudents: course.maxStudents,
-    },
-    development: {
-      referenceHourlyRate: money(development.referenceHourlyRate),
-      exampleHours: development.exampleHours,
-      examplePrice: money(development.exampleHours * development.referenceHourlyRate),
-    },
-    maintenance: {
-      monthlyPrice: money(maintenance.monthlyPrice),
-      includedHours: maintenance.includedHours,
-      additionalHourlyRate: money(maintenance.additionalHourlyRate),
-    },
-  };
+  const values = {} as ServiceInterpolations;
+  for (const id of Object.keys(config) as ServiceId[]) {
+    const service = config[id];
+    values[id] = {
+      price: formatter.format(
+        service.kind === 'project' ? service.startingPrice : service.monthlyPrice,
+      ),
+    };
+    if ('maxSections' in service) values[id]['maxSections'] = service.maxSections;
+    if ('includedHours' in service) {
+      values[id]['includedHours'] = service.includedHours;
+      values[id]['additionalHourlyRate'] = formatter.format(service.additionalHourlyRate);
+    }
+  }
+  return values;
 }

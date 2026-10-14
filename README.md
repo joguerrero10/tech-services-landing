@@ -1,133 +1,110 @@
-# Landing de equipo independiente
+# Tech Together
 
-Base Angular standalone para servicios de formación, desarrollo y mantenimiento de software. Interfaz español/inglés con `@ngx-translate/core`, Tailwind CSS 4 mediante PostCSS y recursos locales.
+Landing de un grupo de programadores para pymes y negocios en Panamá. Angular 22 standalone con prerender estático e hidratación, TypeScript estricto, ngx-translate (es/en), Tailwind CSS 4 y Manrope local. Sin backend, autenticación ni analítica.
 
-## Desarrollo
+## Instalación y desarrollo
 
-Usar Node.js 24 LTS (24.15 o superior dentro de la rama 24) y npm 12, como indica `package.json`.
+Node.js 24 LTS (24.15 o superior dentro de la rama 24) y npm 12. Conservar `package-lock.json`.
 
 ```bash
 npm ci
 npm start
 ```
 
-La CLI sirve la página en `http://localhost:4200`. Para limitar explícitamente el servidor a la máquina local: `npm start -- --host 127.0.0.1`.
+Desarrollo en `http://localhost:4200`. Las rutas `/es` y `/en` determinan el idioma; `/` y rutas inválidas dirigen a `/es`. Los diccionarios se importan localmente antes de renderizar. La preferencia guardada nunca prevalece sobre una ruta explícita.
+
+## Validación
 
 ```bash
-npm run build
-npm run test:ci
 npm run typecheck
-npm run check:styles
-npm run check:contrast
-npm run check:i18n
-npm run test:i18n-validator
-npm run check:assets
-npm run format:check
-```
-
-`check:assets` informa un pendiente real: falta la fotografía de 1440 × 1200 porque el generador no entregó suficiente resolución nativa; no se ha ampliado artificialmente ni se referencia ese archivo inexistente. Ver `docs/assets.md`.
-
-El build se genera en `dist/tech-services-landing/browser`. No hay backend, autenticación ni base de datos. El despliegue estático usa GitHub Actions. `npm run format` aplica Prettier. No se configura ESLint en esta etapa; tipos, compilación Angular y comprobación CSS cubren las verificaciones disponibles.
-
-## Organización y edición
-
-- `src/app/core/config`: contacto confirmado y tarifas de servicios tipadas; nunca inventar destinos.
-- `src/app/core/data`: catálogos de navegación, servicios, aplicaciones y proceso con claves de traducción tipadas.
-- `src/app/core/i18n/locales`: fuente única de todos los textos en `es.json` y `en.json`.
-- `src/app/core/services`: cambios de idioma, metadatos y construcción validada de enlaces.
-- `src/app/shared/components`: piezas reutilizables; cada una separa TS, HTML y CSS.
-- `src/app/features/landing`: página cargada mediante ruta y componentes de sección.
-- `public`: fotografías, fuentes, SVG, favicon y licencias locales.
-
-Los diccionarios se empaquetan con la aplicación: no hay descarga de traducciones ni estados de carga por idioma. Las rutas `/es` y `/en` determinan el idioma antes de activar la landing; `/` y rutas inválidas redirigen a `/es`. El selector conserva la sección, guarda la elección de forma segura y cambia también textos accesibles y metadatos. Los enlaces WhatsApp abren mensajes preparados; no envían mensajes automáticamente.
-
-Tailwind conserva su integración PostCSS. Se importan tema y utilidades, con un reset CSS propio para evitar medidas en píxeles del preflight. El escaneo de Tailwind se limita a las plantillas HTML para que documentación y verificaciones no generen utilidades prohibidas. Usar `page-container` para el contenedor del diseño; `container` pertenece a Tailwind y aplica sus propios límites por breakpoint. No utilizar utilidades de posicionamiento ni `sr-only`.
-
-Ver [internacionalización y tarifas](docs/i18n.md), [brief](docs/brief.md), [recursos y licencias](docs/assets.md) y [revisión visual](design-qa.md).
-
-Referencias técnicas: [Tailwind con Angular](https://tailwindcss.com/docs/installation/framework-guides/angular), [configuración de ngx-translate](https://ngx-translate.org/reference/configuration/).
-
-Sistema visual: [tokens, componentes y contraste](docs/design-system.md). Ejecutar `npm run check:contrast` para validar la paleta.
-
-## Configuración pública e interacciones
-
-La fuente central de datos es `src/app/core/config/site-settings.ts`, expuesta con tipos e inyección por `site.config.ts`:
-
-- `whatsappNumber`: `50768702316`, confirmado por el usuario. Se valida como 8–15 dígitos internacionales sin `+`, espacios ni signos. La validación no comprueba la existencia de una cuenta.
-- `publicSiteUrl`: `https://joguerrero10.github.io/tech-services-landing`, URL pública del repositorio en GitHub Pages.
-- `supportedLocales`: español e inglés; `defaultLocale`: español. Mapeo de rutas, formatos y etiquetas en la misma configuración.
-- `products`: identificadores `finance` y `pos` y claves i18n de los nombres públicos SmartFinance PTY y SmartPOS PTY. No se configuran prestaciones ni enlaces no confirmados.
-
-`CONTACT_CONFIG` conserva una vista inyectable de la configuración de contacto para pruebas y consumidores existentes. Si se retira el número real, usar `whatsappNumber: null`: la configuración de contacto queda pendiente y los CTA muestran un estado traducido, sin `href` vacío. Un número mal formado produce el mismo comportamiento seguro con una explicación de error; el resto de la landing continúa funcionando.
-
-`ContactService.link()` recibe una consulta tipada general, de servicio o de producto; resuelve la traducción activa, interpola el nombre de producto y codifica el mensaje con `encodeURIComponent`. Cada CTA conserva su identificador estable. Los enlaces nativos solo abren WhatsApp al activarlos; nunca envían mensajes automáticamente.
-
-El salto al contenido es siempre visible y compacto. El menú móvil se abre dentro del flujo, se cierra al navegar y recupera el foco del botón con Escape, sin overlay ni captura del foco. Comprobaciones de esta etapa: `docs/interactions.md`.
-
-## HTML estático y SEO
-
-`npm run build` genera `/`, `/es` y `/en` en `dist/tech-services-landing/browser`, con contenido completo e hidratación. `npm run check:prerender` comprueba los HTML reales. `npm run serve:static` los sirve en `http://127.0.0.1:4300` sin fallback SPA.
-
-La compilación normal es una vista previa: `noindex` y `robots.txt` bloquean indexación. Para servir desde una raíz de dominio, configurar `publicSiteUrl` en `site-settings.ts` y ejecutar `npm run build:production`: habilita el sitemap y robots de producción. Sin dominio se mantiene el bloqueo y se omiten URLs públicas, incluso en producción. Para la subruta de GitHub Pages, usar `build:pages` como se indica abajo.
-
-Configuración, comprobaciones y límites: [SEO y prerender](docs/seo-prerender.md).
-
-## Mantener contenidos y datos
-
-### Textos e idiomas
-
-Editar frases completas en `src/app/core/i18n/locales/es.json` y `en.json`, incluidas etiquetas accesibles, SEO y mensajes de WhatsApp. Mantener los mismos nombres de interpolación y no insertar HTML. Actualmente solo se autorizan español e inglés. Para un idioma nuevo se necesitarían diccionario completo, mapa explícito en `site-settings.ts`, configuración de rutas/locale y actualización del validador; no basta con añadir una opción al selector. Ejecutar `check:i18n`, pruebas y `check:prerender` después del build.
-
-### Tarifas y condiciones
-
-Los importes y cantidades se editan en `core/config/services.config.ts`; no se copian a componentes ni JSON. La duración del curso y el ejemplo de desarrollo se calculan automáticamente. `service-interpolations.ts` aplica Intl con USD; `ServicePricing` transfiere el formato del servidor a la hidratación. Si cambia el paquete de tutorías, mantener coherentes horas y precio; el paquete actual no incluye descuento. Las condiciones redactadas se cambian en ambos diccionarios. Mantener aprobación explícita para trabajo adicional de mantenimiento y su unidad «por hora».
-
-### Lanzamiento del curso
-
-El único estado permitido actualmente es `upcoming`. No se habilitan matrículas ni pagos. Cuando se autorice su lanzamiento, modificar de manera conjunta el tipo y valor de estado en `services.config.ts`, el catálogo de servicios, los textos de estado/condiciones/WhatsApp en ambos idiomas y las pruebas que comprueban «Próximamente». Solo añadir fecha, enlace o disponibilidad si se proporciona información real. Cambiar únicamente la etiqueta no constituye un lanzamiento correcto.
-
-### Información real de aplicaciones
-
-Los identificadores `finance` y `pos` permanecen estables en `site-settings.ts`. Añadir únicamente datos confirmados al modelo y catálogo de `core/data/applications.data.ts`; las descripciones y nombres públicos se mantienen en ambos diccionarios. Los enlaces externos nuevos requieren destinos reales validados. Los iconos son ilustraciones genéricas, no logotipos oficiales. Hoy ambos CTA solo solicitan información por WhatsApp.
-
-### Teléfono y dominio
-
-Editar `whatsappNumber` y `publicSiteUrl` en `core/config/site-settings.ts`. El teléfono actual fue proporcionado por el usuario. Para retirar el contacto usar null. La URL debe ser HTTPS real, sin credenciales, query ni fragmento; puede incluir la subruta del repositorio. Actualmente apunta a GitHub Pages. Tras cambiarlo, reconstruir y revisar canonical/hreflang, sitemap y robots en la salida. No editar directamente dist.
-
-## Revisión final reproducible
-
-```bash
-npm run build:production
-npm run check:prerender
-npm run check:public
 npm run test:ci
-npm run test:i18n-validator
-npm run test:seo
-npm run typecheck
 npm run check:i18n
 npm run check:styles
 npm run check:contrast
 npm run check:assets
-npm run format:check
+npm run build:pages
+npm run check:pages
 ```
 
-`check:assets` permanece deliberadamente en error por el recurso pendiente de 1440 píxeles; no se oculta ese resultado. Los archivos usados por la landing son válidos. Informe y evidencias de la revisión completa: [auditoría final](docs/final-audit.md).
+Comprobaciones complementarias: `npm run test:i18n-validator` y `npm run test:seo`. No se ha añadido un linter; la compilación Angular, TypeScript y los validadores propios comprueban las convenciones disponibles.
 
-Para repetir el ensayo de texto aumentado y sin JavaScript, iniciar `npm run serve:static` y, en otra terminal, `node scripts/serve-audit.mjs`. Las URLs `http://127.0.0.1:4301/es?audit=text-200` y `http://127.0.0.1:4301/en?audit=no-js` son fixtures locales: no se publican ni forman parte de dist. El ensayo de texto al 200% no equivale a manipular el zoom nativo del navegador.
+`check:pages` verifica HTML completo en ambos idiomas, siete paquetes, precios, condiciones, presentación del grupo, metadatos, `index, follow`, navegación y prefijo del repositorio. `check:public` comprueba referencias a archivos locales y ausencia de la identidad y servicios retirados. Las pruebas cubren mensajes de WhatsApp, cambios de idioma, rutas, precios, hidratación, navegación y estados de contacto.
 
-## Loading inicial
+## Estructura y edición
 
-`StartupLoader` presenta una introducción de pantalla completa: fondo verde bosque, órbitas SVG, símbolo de código que se dibuja, título traducido y una línea que acompaña los cinco segundos de introducción. La línea es decorativa y no representa el progreso de una descarga. La salida dura 420ms. El contenido de la landing aparece después; el botón «Saltar introducción» y Escape permiten entrar antes. Si el foco estaba en la introducción, se traslada al contenido al cerrarla.
+- `src/app/core/config/`: configuración pública y tarifas tipadas.
+- `src/app/core/data/`: catálogos de servicios, aplicaciones, navegación e iconos, con identificadores estables en inglés.
+- `src/app/core/i18n/locales/es.json` y `en.json`: contenido, accesibilidad, mensajes y SEO. Editar frases completas en ambos idiomas con las mismas claves e interpolaciones.
+- `src/app/core/i18n/service-interpolations.ts`: formato de precios y cantidades.
+- `src/app/core/services/`: idioma, SEO, contacto y TransferState de los precios.
+- `src/app/core/startup/`: ciclo de vida de la introducción.
+- `src/app/shared/`: componentes, directivas y pipe `highlightText` reutilizables.
+- `src/app/features/landing/components/`: Hero, Servicios, Aplicaciones, Sobre nosotros, Proceso y Contacto.
+- `public/`: imágenes, iconos, fuentes y favicon locales.
+- `scripts/`: validaciones, generación de SEO y servidor estático de prueba.
 
-La pantalla usa Grid en el flujo normal, sin overlays ni posicionamiento. Su única medida de viewport es `min-block-size: 100svh`, necesaria para cubrir la pantalla móvil sin depender de las barras del navegador; crece con texto aumentado y pantallas bajas. Tipografía, espacios y controles usan rem. El SVG usa coordenadas intrínsecas sin unidad.
+El encargo vigente presenta Tech Together como un grupo de programadores en Panamá. Todo el contenido habla en plural y no incluye perfiles, cargos ni firmas individuales. La experiencia del grupo y las funciones de las aplicaciones son datos proporcionados por el propietario; no se añaden clientes, cifras o testimonios.
 
-Solo se oculta temporalmente la landing cuando JavaScript activa la introducción y no se solicita movimiento reducido. El HTML prerenderizado permanece disponible sin JavaScript. Un error retira la introducción inmediatamente y un límite de 8 segundos evita bloquear la página si el arranque no termina. No se repite al cambiar de idioma. Con movimiento reducido se muestra directamente la landing.
+## Tarifas y servicios
 
-Archivos: `core/startup/startup-indicator.ts` gestiona tiempos, cierre y foco; `shared/components/startup-loader/` contiene la presentación; `features/landing/landing.css` controla la visibilidad. Textos en `identity.startupTitle`, `accessibility.startup` y `accessibility.skipStartup` de ambos diccionarios. Pruebas de duración, salto con foco, error, tiempo límite y movimiento reducido en `startup-indicator.spec.ts`.
+Los importes están exclusivamente en `core/config/services.config.ts`. Se muestran cinco paquetes con precio «Desde» y dos planes mensuales:
 
-## GitHub Pages
+| Identificador         | Servicio                                                                |
+| --------------------- | ----------------------------------------------------------------------- |
+| `landing-page`        | Landing page para negocio                                               |
+| `website`             | Sitio web administrable; cantidad máxima de secciones configurable      |
+| `online-store`        | Catálogo o tienda online; pasarela local cotizada aparte                |
+| `automation`          | Automatización de un proceso                                            |
+| `custom-system`       | Sistema a medida                                                        |
+| `maintenance-basic`   | Hosting, respaldos, actualizaciones y monitoreo, sin horas de cambios   |
+| `maintenance-support` | Horas incluidas y tarifa adicional configurables, con aprobación previa |
 
-El único workflow es `.github/workflows/pages.yml`: se ejecuta al hacer push a `main` o manualmente desde Actions. En Settings → Pages, seleccionar **GitHub Actions** como origen. Usa Node 24, ejecuta las pruebas, compila y valida los HTML antes de publicar.
+Cambiar precios, secciones y horas en la configuración; condiciones y descripciones en los JSON. El orden y las claves de presentación están en `services.data.ts`. Cada servicio tiene un mensaje propio en `whatsapp`, enlazado por identificador en `contact-inquiry.ts`. El alcance se confirma antes de empezar.
+
+USD se conserva en ambos idiomas. `Intl.NumberFormat` usa `es-PA` y `en-US`, `currencyDisplay: 'narrowSymbol'` y cero decimales: por ejemplo `$250` y `$1,200`. El texto introductorio identifica la moneda como USD. `ServicePricing` transfiere las cadenas formateadas del servidor al navegador para mantener la hidratación consistente.
+
+## Imágenes y estados del portafolio
+
+Los seis proyectos usan ilustraciones conceptuales generadas con IA, sin texto incrustado. Los pies de imagen aclaran que no son capturas reales. Cada recurso está en `public/images/{nombre}.webp` (960 × 600) y `{nombre}-480.webp` (480 × 300), con `srcset`, carga diferida y dimensiones reservadas. Nombres: `smartfinance`, `smartpos`, `omnisphere`, `helpdesk`, `world-cup` y `black-ninja`.
+
+Los originales PNG se conservan en `docs/assets/originals/`, fuera de la salida pública. Origen, dimensiones y pesos: [docs/assets.md](docs/assets.md); encargos completos: [docs/portfolio-image-prompts.json](docs/portfolio-image-prompts.json). Para repetir la conversión: `python3 scripts/convert-portfolio-images.py` (Pillow solo como herramienta local; sin dependencias nuevas en la aplicación).
+
+Los estados confirmados por el propietario se centralizan en `core/config/site-settings.ts`: SmartFinance publicado; SmartPOS y OmniSphere en desarrollo; Helpdesk, World Cup Predictor y Black Ninja sin publicar. Están traducidos y los proyectos en desarrollo muestran sus funciones como alcance previsto. No se incluyen enlaces de descarga ni demos. El enlace público de SmartFinance está pendiente de confirmación; su CTA sigue siendo una consulta por WhatsApp.
+
+Si se sustituyen ilustraciones por capturas reales, actualizar ambas variantes, los alt y el pie de imagen en español e inglés. No editar `dist`. Las funciones del portafolio se editan en `applications` de ambos diccionarios; el catálogo tipado está en `applications.data.ts`.
+
+La fotografía ambiental del hero conserva sus variantes nativas de 480 × 400 y 960 × 800; no representa una oficina real del grupo. Se reutiliza en Sobre nosotros. No se amplía artificialmente a 1440. `check:assets` valida los recursos utilizados, las hojas de contacto, SVG, WOFF2 e ICO.
+
+Manrope conserva su licencia en `public/fonts/`; Lucide en `public/icons/LUCIDE-LICENSE.txt`. `public/icons/tt-mark.svg` es un monograma TT original, sin scripts ni referencias externas, usado con el componente de máscaras SVG existente.
+
+## Contacto y configuración pública
+
+`core/config/site-settings.ts` centraliza:
+
+- WhatsApp confirmado: `50768702316`.
+- URL pública: `https://joguerrero10.github.io/tech-services-landing`.
+- Instagram: `https://www.instagram.com/techtogether.pa/`.
+- Idiomas, locale de formato y nombres públicos de productos.
+
+Los CTA usan enlaces wa.me con número validado y mensaje traducido codificado; solo se abren por acción del usuario y no envían mensajes automáticamente. Si se retira el número, establecer `whatsappNumber: null`: se muestran estados accesibles sin enlaces vacíos. La URL pública admite HTTPS y subruta, sin credenciales, query ni fragmento.
+
+## Accesibilidad y presentación
+
+Se conservan crema, verde bosque, terracota, Manrope y cuadrículas abiertas. El menú móvil despliega en el flujo normal, cierra al navegar y admite Escape con recuperación de foco. Las imágenes reservan espacio y el contenido admite traducciones largas.
+
+**Excepción autorizada:** el enlace `.skip-link` utiliza `position: absolute` y desplazamiento vertical para quedar fuera de pantalla sin eliminarse del orden de tabulación. Aparece con `:focus`/`:focus-visible` y lleva a `main#contenido`. El validador permite ese posicionamiento exclusivamente en ese selector y sigue rechazándolo en el resto de estilos. No se oculta desbordamiento para disimular problemas.
+
+La introducción inicial conserva cinco segundos, pantalla verde con símbolo de código, órbitas y salida de 420ms; el nombre público también usa Tech Together. La línea animada es decorativa, no un porcentaje de descarga. «Saltar introducción» o Escape la cierran. El foco pasa a `main` si estaba dentro de la introducción. Un error la retira y un límite de ocho segundos evita un bloqueo. Sin JavaScript o con movimiento reducido se muestra directamente el contenido. No se repite al cambiar de idioma.
+
+La introducción usa Grid sin overlay. `min-block-size: 100svh` es la excepción documentada de unidad de viewport para cubrir la pantalla móvil; puede crecer con el contenido. Espaciado y tipografía propios siguen en rem/em.
+
+## Publicación en GitHub Pages
+
+El workflow `.github/workflows/pages.yml` se ejecuta al hacer push a `main` o manualmente. En Settings → Pages, usar **GitHub Actions**. El workflow ya utiliza **`npm run build:pages`**: aplica el prefijo `/tech-services-landing/` directamente a Angular y ejecuta el generador SEO en producción, sustituyendo el `noindex` inicial por **`index, follow`**, con sitemap y robots de producción.
+
+No usar `npm run build -- --base-href ...`: el argumento terminaría en el generador SEO en vez de Angular, provocando redirecciones incorrectas. `npm run build` se reserva para vista previa con `noindex`; `build:production` es para servir en la raíz de un dominio.
+
+Para ensayar la salida sin publicar:
 
 ```bash
 npm run build:pages
@@ -135,8 +112,12 @@ npm run check:pages
 BASE_PATH=/tech-services-landing npm run serve:static
 ```
 
-Abrir `http://127.0.0.1:4300/tech-services-landing/` para comprobar localmente la redirección, `/tech-services-landing/es/` y `/tech-services-landing/en/`. La URL pública es <https://joguerrero10.github.io/tech-services-landing/>; la raíz redirige a `/tech-services-landing/es`.
+Abrir `http://127.0.0.1:4300/tech-services-landing/`, `/tech-services-landing/es/` y `/tech-services-landing/en/`. El servidor no usa fallback SPA; las entradas directas deben corresponder a HTML reales. La raíz redirige a `/tech-services-landing/es`. Después de un cambio de repositorio, actualizar el prefijo en `build:pages`, `check:pages` y `publicSiteUrl`.
 
-Usar `build:pages`, que pasa `--base-href` directamente a Angular. No usar `npm run build -- --base-href ...`: como `build` contiene dos comandos, npm entrega esos argumentos al generador SEO y Angular compila con base `/`, provocando la redirección errónea a `/es`. `check:pages` exige el prefijo en los HTML de ambos idiomas, navegación y redirección raíz, además de comprobar recursos locales. Al cambiar de repositorio, actualizar también el prefijo en `build:pages`, `check:pages` y `publicSiteUrl`.
+Compilar localmente no publica la web. Los commits y el push quedan a cargo del propietario.
 
-Para publicar estos cambios, hacer commit y push a `main`, y esperar que finalice **Deploy landing to GitHub Pages** en Actions. La compilación local no actualiza la web publicada.
+## Proyectos aportados
+
+El portafolio incluye SmartFinance PTY, SmartPOS PTY, OmniSphere AI, Helpdesk AI Automation, World Cup Predictor AI y Black Ninja. Los seis cuentan con ilustraciones conceptuales generadas para la landing y estados de publicación confirmados por el propietario. No se presentan como capturas reales.
+
+Las descripciones se basan en el material proporcionado y en una revisión estática de sus módulos. No se han ejecutado esos proyectos, verificado integraciones externas ni confirmado despliegues; no se publican cifras de rendimiento, disponibilidad o enlaces de descarga. Los ZIP, sus configuraciones y sus datos no se copian a la landing. Cada proyecto tiene una consulta de WhatsApp con su nombre. Fuentes de la revisión en `docs/portfolio-sources.md`.

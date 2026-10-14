@@ -15,27 +15,12 @@
         <app-icon class="service-icon" [name]="item.icon" />
         <div class="service-content">
           <div class="service-heading">
-            <h3 [id]="'service-' + item.id">{{ item.title | translate }}</h3>
-            @if (item.badge) {
-              <span class="badge">{{ item.badge | translate }}</span>
-            }
+            <h3 [id]="'service-' + item.id">{{ item.title | translate: parameters()[item.id] }}</h3>
           </div>
           <p class="description">{{ item.description | translate: parameters()[item.id] }}</p>
-          @if (item.group) {
-            <p class="description">{{ item.group | translate: parameters()[item.id] }}</p>
-          }
           <div class="rate-block">
             <p class="rate-amount">{{ item.price | translate: parameters()[item.id] }}</p>
-            @if (item.example) {
-              <p class="rate-conditions">{{ item.example | translate: parameters()[item.id] }}</p>
-            }
             <p class="rate-conditions">{{ item.detail | translate: parameters()[item.id] }}</p>
-            @if (item.extra) {
-              <p class="rate-conditions">{{ item.extra | translate: parameters()[item.id] }}</p>
-            }
-            @if (item.note) {
-              <p class="rate-conditions">{{ item.note | translate: parameters()[item.id] }}</p>
-            }
           </div>
           <app-contact-link
             [label]="item.action"

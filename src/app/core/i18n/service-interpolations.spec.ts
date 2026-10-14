@@ -1,25 +1,33 @@
 import { SERVICES_CONFIG } from '../config/services.config';
 import { serviceInterpolations } from './service-interpolations';
 
-describe('Service prices and calculations', () => {
-  it('calculates totals from the supplied rates and session lengths', () => {
-    const values = serviceInterpolations('en-US', {
+describe('Service package prices', () => {
+  it('uses updated config values for prices and included support hours', () => {
+    const values = serviceInterpolations('es-PA', {
       ...SERVICES_CONFIG,
-      'python-course': { ...SERVICES_CONFIG['python-course'], sessions: 8, hoursPerSession: 3 },
-      development: { ...SERVICES_CONFIG.development, referenceHourlyRate: 60, exampleHours: 5 },
+      'landing-page': { ...SERVICES_CONFIG['landing-page'], startingPrice: 325 },
+      'maintenance-support': {
+        ...SERVICES_CONFIG['maintenance-support'],
+        includedHours: 3,
+        additionalHourlyRate: 75,
+      },
     });
-    expect(values['python-course']['totalHours']).toBe(24);
-    expect(values.development['examplePrice']).toBe('USD\u00a0300.00');
+    expect(values['landing-page']['price']).toBe('$325');
+    expect(values['maintenance-support']['includedHours']).toBe(3);
+    expect(values['maintenance-support']['additionalHourlyRate']).toBe('$75');
   });
-  it('keeps USD and changes only number formatting between Spanish and English', () => {
-    const es = serviceInterpolations('es-ES');
-    const en = serviceInterpolations('en-US');
-    expect(es.tutoring['hourlyRate']).toBe('30,00\u00a0USD');
-    expect(en.tutoring['hourlyRate']).toBe('USD\u00a030.00');
-    expect(es['python-course']['totalHours']).toBe(12);
-    expect(en.development['examplePrice']).toBe('USD\u00a02,000.00');
-    expect(SERVICES_CONFIG.tutoring.packagePrice).toBe(
-      SERVICES_CONFIG.tutoring.hourlyRate * SERVICES_CONFIG.tutoring.packageHours,
-    );
+  it('renders the seven USD package prices without decimals in both locales', () => {
+    for (const locale of ['es-PA', 'en-US']) {
+      const values = serviceInterpolations(locale);
+      expect(Object.values(values).map((value) => value['price'])).toEqual([
+        '$250',
+        '$450',
+        '$750',
+        '$200',
+        '$1,200',
+        '$40',
+        '$100',
+      ]);
+    }
   });
 });

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 import { SITE_SETTINGS } from '../src/app/core/config/site-settings.ts';
+import { SERVICES } from '../src/app/core/data/services.data.ts';
 import { publicOrigin } from '../src/app/core/config/public-origin.ts';
 const base = 'dist/tech-services-landing/browser';
 const expectedBaseHref = process.env.EXPECTED_BASE_HREF;
@@ -36,10 +37,56 @@ for (const lang of SITE_SETTINGS.supportedLocales) {
   assert.equal(doc.querySelector('meta[property="og:type"]').content, 'website');
   assert.equal(doc.querySelectorAll('h1').length, 1);
   assert.equal(normalize(doc.querySelector('h1').textContent), dictionary.hero.title);
-  assert.equal(doc.querySelectorAll('#servicios article').length, 4);
+  assert.equal(doc.querySelectorAll('#servicios article').length, 7);
   const text = normalize(doc.querySelector('main').textContent);
-  for (const product of ['SmartFinance PTY', 'SmartPOS PTY']) assert.ok(text.includes(product));
-  assert.ok(text.includes(dictionary.services.pythonCourse.badge));
+  assert.equal(
+    doc.querySelectorAll('.application-card').length,
+    Object.keys(SITE_SETTINGS.products).length,
+  );
+  for (const [index, product] of Object.values(SITE_SETTINGS.products).entries()) {
+    const card = doc.querySelectorAll('.application-card')[index];
+    assert.equal(
+      card.querySelector('.project-status').textContent.trim(),
+      dictionary.applications.status[product.status],
+    );
+    assert.ok(card.querySelector('img').getAttribute('srcset').includes('480w'));
+    assert.equal(
+      card.querySelector('figcaption').textContent.trim(),
+      dictionary.applications.illustration,
+    );
+    const project = dictionary.applications[product.nameKey.split('.')[1]];
+    assert.ok(text.includes(project.name));
+    assert.ok(text.includes(project.description));
+    for (const feature of Object.values(project.features)) assert.ok(text.includes(feature));
+  }
+  assert.ok(text.includes(dictionary.about.title));
+  assert.ok(text.includes(dictionary.about.description));
+  assert.equal(doc.querySelectorAll('#sobre-nosotros .technology-list li').length, 8);
+  assert.equal(doc.querySelectorAll('#sobre-nosotros .value-list li').length, 3);
+  assert.deepEqual(
+    [...doc.querySelectorAll('#servicios .rate-amount')].map((el) => normalize(el.textContent)),
+    lang === 'es'
+      ? [
+          'Desde $250',
+          'Desde $450',
+          'Desde $750',
+          'Desde $200',
+          'Desde $1,200',
+          '$40 por mes',
+          '$100 por mes',
+        ]
+      : [
+          'From $250',
+          'From $450',
+          'From $750',
+          'From $200',
+          'From $1,200',
+          '$40 per month',
+          '$100 per month',
+        ],
+  );
+  if (expectedBaseHref)
+    assert.equal(doc.querySelector('meta[name="robots"]')?.content, 'index, follow');
   const state = JSON.parse(doc.querySelector('script[type="application/json"]').textContent);
   const pricing = state[`service-pricing:${SITE_SETTINGS.locales[lang].locale}`];
   assert.ok(pricing, 'Server monetary formatting must be transferred');
@@ -50,14 +97,10 @@ for (const lang of SITE_SETTINGS.supportedLocales) {
         `Missing localized price/condition ${value}`,
       );
   }
-  for (const [id, key] of Object.entries({
-    tutoring: 'tutoring',
-    'python-course': 'pythonCourse',
-    development: 'development',
-    maintenance: 'maintenance',
-  })) {
-    for (const [name, sentence] of Object.entries(dictionary.services[key])) {
-      if (name === 'extraWithoutApproval') continue;
+  for (const item of SERVICES) {
+    const id = item.id;
+    const sentences = dictionary.services[item.title.split('.')[1]];
+    for (const [, sentence] of Object.entries(sentences)) {
       const rendered = sentence.replace(/{{(\w+)}}/g, (_, variable) =>
         String(pricing[id][variable]),
       );
@@ -65,7 +108,10 @@ for (const lang of SITE_SETTINGS.supportedLocales) {
     }
   }
   assert.doesNotMatch(text, /\{\{|\b(?:hero|services|applications|contact)\.[a-z]/);
-  assert.doesNotMatch(html, /SmartNova|Smart\s?Academy|Joel\./i);
+  assert.doesNotMatch(
+    html,
+    /Equipo independiente|Independent team|tutorías|tutoring|curso de Python|Python course/i,
+  );
   const origin = publicOrigin(SITE_SETTINGS.publicSiteUrl);
   assert.equal(doc.querySelectorAll('link[rel="canonical"]').length, origin ? 1 : 0);
   assert.equal(doc.querySelectorAll('link[hreflang]').length, origin ? 3 : 0);
@@ -88,6 +134,6 @@ assert.equal(
   rootDom.window.document.querySelector('meta[http-equiv="refresh"]')?.content,
   `0; url=${baseHref}${defaultPath}`,
 );
-assert.equal(rootDom.window.document.querySelectorAll('#servicios article').length, 4);
+assert.equal(rootDom.window.document.querySelectorAll('#servicios article').length, 7);
 rootDom.window.close();
 console.log(`Root: localized content and static redirect to ${baseHref}${defaultPath} verified.`);

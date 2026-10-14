@@ -1,4 +1,4 @@
-import { SERVICES_CONFIG, ServiceId } from '../config/services.config';
+import type { ServiceId } from '../config/services.config';
 import type { IconName } from './icons.data';
 import type { TranslationKey } from '../i18n/translation.model';
 interface ServiceItem {
@@ -9,58 +9,69 @@ interface ServiceItem {
   readonly price: TranslationKey;
   readonly detail: TranslationKey;
   readonly action: TranslationKey;
-  readonly badge: TranslationKey | null;
-  readonly extra?: TranslationKey;
-  readonly group?: TranslationKey;
-  readonly example?: TranslationKey;
-  readonly note?: TranslationKey;
 }
-export const SERVICES: readonly ServiceItem[] = [
+export const SERVICES = [
   {
-    id: 'tutoring',
-    icon: 'book-open',
-    title: 'services.tutoring.title',
-    description: 'services.tutoring.description',
-    price: 'services.tutoring.price',
-    detail: 'services.tutoring.detail',
-    action: 'services.tutoring.action',
-    badge: null,
-  },
-  {
-    id: 'python-course',
-    icon: 'terminal',
-    title: 'services.pythonCourse.title',
-    description: 'services.pythonCourse.description',
-    group: 'services.pythonCourse.group',
-    price: 'services.pythonCourse.price',
-    detail: 'services.pythonCourse.detail',
-    action: 'services.pythonCourse.action',
-    badge:
-      SERVICES_CONFIG['python-course'].status === 'upcoming' ? 'services.pythonCourse.badge' : null,
-  },
-  {
-    id: 'development',
+    id: 'landing-page',
     icon: 'laptop-code',
-    title: 'services.development.title',
-    description: 'services.development.description',
-    price: 'services.development.price',
-    detail: 'services.development.detail',
-    example: 'services.development.example',
-    action: 'services.development.action',
-    badge: null,
+    title: 'services.landingPage.title',
+    description: 'services.landingPage.description',
+    price: 'services.landingPage.price',
+    detail: 'services.landingPage.detail',
+    action: 'services.landingPage.action',
   },
   {
-    id: 'maintenance',
-    icon: 'wrench',
-    title: 'services.maintenance.title',
-    description: 'services.maintenance.description',
-    price: 'services.maintenance.price',
-    detail: 'services.maintenance.detail',
-    note: 'services.maintenance.note',
-    action: 'services.maintenance.action',
-    extra: SERVICES_CONFIG.maintenance.requiresApprovalForExtraWork
-      ? 'services.maintenance.extraWithApproval'
-      : 'services.maintenance.extraWithoutApproval',
-    badge: null,
+    id: 'website',
+    icon: 'laptop-code',
+    title: 'services.website.title',
+    description: 'services.website.description',
+    price: 'services.website.price',
+    detail: 'services.website.detail',
+    action: 'services.website.action',
   },
-];
+  {
+    id: 'online-store',
+    icon: 'calculator',
+    title: 'services.onlineStore.title',
+    description: 'services.onlineStore.description',
+    price: 'services.onlineStore.price',
+    detail: 'services.onlineStore.detail',
+    action: 'services.onlineStore.action',
+  },
+  {
+    id: 'automation',
+    icon: 'terminal',
+    title: 'services.automation.title',
+    description: 'services.automation.description',
+    price: 'services.automation.price',
+    detail: 'services.automation.detail',
+    action: 'services.automation.action',
+  },
+  {
+    id: 'custom-system',
+    icon: 'code-xml',
+    title: 'services.customSystem.title',
+    description: 'services.customSystem.description',
+    price: 'services.customSystem.price',
+    detail: 'services.customSystem.detail',
+    action: 'services.customSystem.action',
+  },
+  {
+    id: 'maintenance-basic',
+    icon: 'wrench',
+    title: 'services.maintenanceBasic.title',
+    description: 'services.maintenanceBasic.description',
+    price: 'services.maintenanceBasic.price',
+    detail: 'services.maintenanceBasic.detail',
+    action: 'services.maintenanceBasic.action',
+  },
+  {
+    id: 'maintenance-support',
+    icon: 'wrench',
+    title: 'services.maintenanceSupport.title',
+    description: 'services.maintenanceSupport.description',
+    price: 'services.maintenanceSupport.price',
+    detail: 'services.maintenanceSupport.detail',
+    action: 'services.maintenanceSupport.action',
+  },
+] as const satisfies readonly ServiceItem[];

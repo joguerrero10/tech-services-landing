@@ -13,9 +13,34 @@
     <div class="application-grid">
       @for (item of items; track item.id) {
         <article class="application-card">
-          <app-icon [name]="item.icon" />
+          <figure>
+            <img
+              [src]="item.image.src"
+              [srcset]="item.image.srcset"
+              sizes="(min-width: 80rem) 35rem, (min-width: 48rem) calc(50vw - 5rem), calc(100vw - 2.5rem)"
+              [alt]="item.image.alt | translate"
+              width="960"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{{ 'applications.illustration' | translate }}</figcaption>
+          </figure>
           <div>
-            <h3>{{ item.name | translate }}</h3>
+            <div class="application-heading">
+              <app-icon [name]="item.icon" />
+              <h3>{{ item.name | translate }}</h3>
+            </div>
+            <p class="project-status">{{ item.status | translate }}</p>
+            <p class="application-description">{{ item.description | translate }}</p>
+            @if (item.lifecycle === 'development') {
+              <p class="project-scope">{{ 'applications.plannedFeatures' | translate }}</p>
+            }
+            <ul>
+              @for (feature of item.features; track feature) {
+                <li>{{ feature | translate }}</li>
+              }
+            </ul>
             <app-contact-link
               label="applications.action"
               [inquiry]="{ kind: 'product', productId: item.id }"

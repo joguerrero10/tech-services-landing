@@ -4,7 +4,13 @@ import { JSDOM } from 'jsdom';
 const requiredPhotos = new Map([
   ['team-workspace-480.webp', [480, 400]],
   ['team-workspace-960.webp', [960, 800]],
-  ['team-workspace-1440.webp', [1440, 1200]],
+  // The active hero srcset uses native 480/960 variants; no upscaled 1440 asset.
+  ...['smartfinance', 'smartpos', 'omnisphere', 'helpdesk', 'world-cup', 'black-ninja'].flatMap(
+    (name) => [
+      [`${name}.webp`, [960, 600]],
+      [`${name}-480.webp`, [480, 300]],
+    ],
+  ),
   ['contact-leaves-960.webp', [960, 320]],
   ['contact-leaves-1920.webp', [1920, 640]],
 ]);

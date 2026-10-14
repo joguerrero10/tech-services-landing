@@ -19,7 +19,7 @@ for (const file of files) {
   const source = await readFile(file, 'utf8');
   assert.doesNotMatch(
     source,
-    /SmartNova|Smart\s?Academy|Joel\./i,
+    /SmartNova|Smart\s?Academy|Equipo independiente|Independent team|tutorías|tutoring|pythonCourse|\bJoel\b|\bGuerrero\b|sobre-mi|joel\.webp/i,
     `Excluded name in public output: ${file}`,
   );
   if (/\.(html|css)$/.test(file)) {

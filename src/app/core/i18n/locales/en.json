@@ -1,17 +1,18 @@
 {
   "identity": {
-    "name": "Independent team",
-    "home": "Independent team — Home",
+    "name": "Tech Together",
+    "home": "Tech Together — Home",
     "startupTitle": "We bring your ideas to life."
   },
   "navigation": {
     "services": "Services",
-    "applications": "Applications",
+    "applications": "Projects",
     "process": "How we work",
     "contact": "Contact",
     "talk": "Let’s talk",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "about": "About us"
   },
   "language": {
     "label": "Language",
@@ -19,70 +20,150 @@
     "en": "English"
   },
   "hero": {
-    "eyebrow": "Development · Learning · Maintenance",
-    "title": "Technology that makes your life easier.",
-    "description": "We are a team of independent professionals. We build software, teach programming and support your projects.",
-    "secondary": "Explore services",
+    "eyebrow": "Development · Automation · Maintenance",
+    "title": "Custom software for businesses in Panama.",
+    "description": "We are a team of programmers with experience in banking and fintech. We build websites, systems and automations, and keep them running.",
+    "secondary": "View services",
     "imageAlt": "Shared workspace with laptops, plants and warm light on a wooden table.",
-    "titleHighlight": "easier"
+    "titleHighlight": "businesses in Panama"
   },
   "services": {
     "title": "How can we help you?",
-    "intro": "Starting rates for reference. We confirm scope and availability before getting started.",
-    "tutoring": {
-      "title": "Programming and big data tutoring",
-      "description": "Assessment, live lessons, exercises and follow-up.",
-      "price": "{{hourlyRate}} per hour",
-      "detail": "{{packageHours}}-hour package: {{packagePrice}}.",
-      "action": "Ask about tutoring"
+    "intro": "Packages in USD. We confirm scope before work begins.",
+    "landingPage": {
+      "title": "Business landing page",
+      "description": "A page to introduce your business and make it easy to get in touch.",
+      "price": "From {{price}}",
+      "detail": "Scope and deliverables agreed before work begins.",
+      "action": "Get a landing page quote"
     },
-    "development": {
-      "title": "Software development",
-      "description": "Web and mobile applications, internal systems, integrations and automations.",
-      "price": "{{referenceHourlyRate}} per hour",
-      "detail": "Agreed deliverables and scope.",
-      "action": "Get a quote for my project",
-      "example": "Example: {{exampleHours}} hours = {{examplePrice}}."
+    "website": {
+      "title": "Manageable website",
+      "description": "A website with up to {{maxSections}} sections that you can manage.",
+      "price": "From {{price}}",
+      "detail": "We confirm the sections and scope before work begins.",
+      "action": "Get a website quote"
     },
-    "maintenance": {
-      "title": "Software maintenance",
-      "description": "Scheduled maintenance, small changes and a review of your software.",
-      "price": "{{monthlyPrice}} per month",
-      "detail": "Up to {{includedHours}} hours included.",
-      "action": "Ask about maintenance",
-      "extraWithApproval": "Additional hours: {{additionalHourlyRate}} per hour, with prior approval.",
-      "extraWithoutApproval": "Additional hours: {{additionalHourlyRate}} per hour.",
-      "note": "Service subject to an assessment of the software."
+    "onlineStore": {
+      "title": "Catalog or online store",
+      "description": "A catalog or online store with orders through WhatsApp.",
+      "price": "From {{price}}",
+      "detail": "Local payment gateway integration is quoted separately.",
+      "action": "Get an online store quote"
     },
-    "pythonCourse": {
-      "title": "Live Python course",
-      "description": "Python fundamentals in {{sessions}} sessions of {{hoursPerSession}} hours, with exercises and a final project.",
-      "price": "{{pricePerStudent}} per student",
-      "detail": "We will launch after validating the content in tutoring sessions.",
-      "badge": "Coming soon",
-      "action": "I’d like information",
-      "group": "Group of {{minStudents}} to {{maxStudents}} students. {{totalHours}} hours in total."
+    "automation": {
+      "title": "Single-process automation",
+      "description": "We automate reports, copying data between tools or follow-ups.",
+      "price": "From {{price}}",
+      "detail": "The package covers one process with an agreed scope.",
+      "action": "Ask about automation"
+    },
+    "customSystem": {
+      "title": "Custom system",
+      "description": "A system for appointments, inventory or an internal business dashboard.",
+      "price": "From {{price}}",
+      "detail": "We define deliverables and scope before work begins.",
+      "action": "Get a custom system quote"
+    },
+    "maintenanceBasic": {
+      "title": "Basic Maintenance Plan",
+      "description": "Hosting, backups, updates and monitoring.",
+      "price": "{{price}} per month",
+      "detail": "No change hours included. Subject to a software assessment.",
+      "action": "Ask about the Basic Plan"
+    },
+    "maintenanceSupport": {
+      "title": "Support Maintenance Plan",
+      "description": "Maintenance with {{includedHours}} hours of changes included each month.",
+      "price": "{{price}} per month",
+      "detail": "Additional hour: {{additionalHourlyRate}}, with prior approval. Subject to a software assessment.",
+      "action": "Ask about the Support Plan"
     }
   },
   "applications": {
-    "title": "Our applications",
-    "intro": "Explore our solutions and ask about their features.",
+    "title": "Projects developed",
+    "intro": "Explore some of the projects we have worked on and the problems they solve.",
     "finance": {
       "name": "SmartFinance PTY",
-      "action": "Request information about SmartFinance PTY"
+      "action": "Request information about SmartFinance PTY",
+      "description": "Personal finance app.",
+      "features": {
+        "first": "Receipt scanning with the camera",
+        "second": "Budgets with alerts",
+        "third": "Real-time spending analysis"
+      },
+      "imageAlt": "Concept illustration of a phone with expense charts, a receipt and coins."
     },
     "pos": {
       "name": "SmartPOS PTY",
-      "action": "Request information about SmartPOS PTY"
+      "action": "Request information about SmartPOS PTY",
+      "description": "We are developing a point of sale and online store for small businesses.",
+      "features": {
+        "first": "Sales and inventory",
+        "second": "Quotes shared through WhatsApp",
+        "third": "Payments with Yappy, cards and bank transfers"
+      },
+      "imageAlt": "Concept illustration of a laptop with inventory and sales, boxes and a payment terminal."
     },
-    "action": "Request information"
+    "action": "Request information",
+    "illustration": "Concept illustration; not a product screenshot.",
+    "omnisphere": {
+      "name": "OmniSphere AI",
+      "action": "Request information about OmniSphere AI",
+      "description": "We are developing a multi-tenant platform for creating and operating AI chatbots.",
+      "features": {
+        "first": "Conversation flow creation",
+        "second": "Intent recognition",
+        "third": "Channel management by organization"
+      },
+      "imageAlt": "Concept illustration of connected conversations on a laptop."
+    },
+    "helpdesk": {
+      "name": "Helpdesk AI Automation",
+      "action": "Request information about Helpdesk AI Automation",
+      "description": "Support inquiry automation and incident management through WhatsApp.",
+      "features": {
+        "first": "AI-assisted responses",
+        "second": "Ticket creation and lookup",
+        "third": "Incident attachments"
+      },
+      "imageAlt": "Concept illustration of a phone with messages, support tickets and a headset."
+    },
+    "worldCup": {
+      "name": "World Cup Predictor AI",
+      "action": "Request information about World Cup Predictor AI",
+      "description": "Probabilistic football match analysis and tournament simulation.",
+      "features": {
+        "first": "Match outcome probabilities",
+        "second": "Monte Carlo tournament simulation",
+        "third": "Statistical model comparison"
+      },
+      "imageAlt": "Concept illustration of a laptop with football analysis, a ball and a tournament bracket."
+    },
+    "blackNinja": {
+      "name": "Black Ninja",
+      "action": "Request information about Black Ninja",
+      "description": "Browser platform game with levels and scores.",
+      "features": {
+        "first": "Platforms, jumps and coin collection",
+        "second": "Keyboard controls",
+        "third": "Score tracking by level"
+      },
+      "imageAlt": "Concept illustration of a ninja jumping between platforms and coins emerging from a laptop."
+    },
+    "status": {
+      "published": "Published",
+      "development": "In development",
+      "unpublished": "Not published"
+    },
+    "plannedFeatures": "Planned project scope"
   },
   "process": {
     "title": "How we work",
     "conversation": {
       "number": "1",
       "title": "We discuss your needs",
-      "description": "We learn about your idea or the support you need."
+      "description": "We learn about your idea and the support you need."
     },
     "scope": {
       "number": "2",
@@ -92,17 +173,17 @@
     "collaboration": {
       "number": "3",
       "title": "We work with you",
-      "description": "We develop, teach or maintain your software."
+      "description": "We develop, automate or maintain your software."
     }
   },
   "contact": {
-    "title": "What would you like to build or learn?",
+    "title": "What would you like to build?",
     "description": "Tell us what you need and let’s find the next step together.",
     "whatsapp": "Let’s chat on WhatsApp",
-    "pending": "We will share our contact channels soon."
+    "pending": "We will share our contact details soon."
   },
   "footer": {
-    "tagline": "Development · Learning · Maintenance"
+    "tagline": "Development · Automation · Maintenance"
   },
   "accessibility": {
     "skip": "Skip to content",
@@ -112,21 +193,46 @@
     "skipStartup": "Skip introduction"
   },
   "seo": {
-    "title": "Software development, training and maintenance | Independent team",
-    "description": "We are a team of independent professionals. We offer programming and big data tutoring, software development and maintenance. Explore our upcoming Python course."
+    "title": "Custom software for businesses in Panama | Tech Together",
+    "description": "We are Tech Together, a group of programmers in Panama. We build websites, custom systems and automations for small businesses, with maintenance plans."
   },
   "whatsapp": {
-    "general": "Hello, I would like to learn more about your team’s services.",
-    "tutoring": "Hello, I am interested in programming and big data tutoring. I would like to ask about availability and how to get started.",
-    "pythonCourse": "Hello, I would like information about the upcoming Python fundamentals course.",
-    "development": "Hello, I have a project and would like to discuss its scope and request a quote.",
-    "maintenance": "Hello, I would like to ask whether you can maintain my software and learn about the service terms.",
-    "application": "Hello, I would like to learn more about {{productName}} and its features."
+    "general": "Hello, Tech Together. I would like to learn more about Tech Together’s services.",
+    "landingPage": "Hello, Tech Together. I am interested in a landing page for my business. I would like to discuss the scope and request a quote.",
+    "website": "Hello, Tech Together. I am interested in a manageable website. I would like to discuss the sections and scope.",
+    "onlineStore": "Hello, Tech Together. I am interested in a catalog or online store with WhatsApp orders. I would like to request a quote.",
+    "automation": "Hello, Tech Together. I would like to automate a business process and discuss the scope.",
+    "customSystem": "Hello, Tech Together. I need a custom system for my business. I would like to discuss the scope and request a quote.",
+    "maintenanceBasic": "Hello, Tech Together. I am interested in the Basic Maintenance Plan. I would like to learn about the terms and have my software assessed.",
+    "maintenanceSupport": "Hello, Tech Together. I am interested in the Support Maintenance Plan. I would like to learn about the terms and included change hours.",
+    "application": "Hello, Tech Together. I would like to learn more about {{productName}} and its features."
   },
   "errors": {
     "unsupportedLanguage": "We offer this page in Spanish and English.",
     "languageChange": "We could not change the language. We can try again.",
-    "preferenceStorage": "We changed the language, but could not save the preference in this browser.",
-    "contactUnavailable": "We cannot open contact right now. Let’s try again later."
+    "preferenceStorage": "We changed the language, but could not save your preference in this browser.",
+    "contactUnavailable": "We cannot open contact right now. Please try again later."
+  },
+  "about": {
+    "title": "About us",
+    "description": "We are a group of programmers in Panama. We have over 5 years of experience developing software, working in QA and using cloud technologies, including projects in banking and fintech. We focus on practical solutions for businesses: clear, secure and easy to maintain.",
+    "technologiesTitle": "Technologies we work with",
+    "technologies": {
+      "angular": "Angular",
+      "node": "Node.js",
+      "java": "Java",
+      "python": "Python",
+      "aws": "AWS",
+      "azure": "Azure",
+      "sql": "SQL",
+      "mongodb": "MongoDB"
+    },
+    "values": {
+      "security": "Security by design",
+      "pricing": "Clear pricing before work begins",
+      "support": "Support after delivery"
+    },
+    "imageAlt": "Atmospheric image of a workspace with laptops and plants.",
+    "instagramLabel": "Tech Together on Instagram"
   }
 }

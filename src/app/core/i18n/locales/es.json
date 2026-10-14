@@ -1,17 +1,18 @@
 {
   "identity": {
-    "name": "Equipo independiente",
-    "home": "Equipo independiente — Inicio",
+    "name": "Tech Together",
+    "home": "Tech Together — Inicio",
     "startupTitle": "Damos vida a tus ideas."
   },
   "navigation": {
     "services": "Servicios",
-    "applications": "Aplicaciones",
+    "applications": "Proyectos",
     "process": "Cómo trabajamos",
     "contact": "Contacto",
     "talk": "Hablemos",
     "openMenu": "Abrir menú",
-    "closeMenu": "Cerrar menú"
+    "closeMenu": "Cerrar menú",
+    "about": "Sobre nosotros"
   },
   "language": {
     "label": "Idioma",
@@ -19,70 +20,150 @@
     "en": "English"
   },
   "hero": {
-    "eyebrow": "Desarrollo · Formación · Mantenimiento",
-    "title": "Tecnología que te hace la vida más fácil.",
-    "description": "Somos un equipo de profesionales independientes. Creamos software, enseñamos programación y acompañamos tus proyectos.",
-    "secondary": "Explorar servicios",
+    "eyebrow": "Desarrollo · Automatización · Mantenimiento",
+    "title": "Software a medida para negocios en Panamá.",
+    "description": "Somos un equipo de programadores con experiencia en banca y fintech. Creamos webs, sistemas y automatizaciones, y los mantenemos funcionando.",
+    "secondary": "Ver servicios",
     "imageAlt": "Espacio de trabajo compartido con portátiles, plantas y luz cálida sobre una mesa de madera.",
-    "titleHighlight": "más fácil"
+    "titleHighlight": "negocios en Panamá"
   },
   "services": {
     "title": "¿En qué podemos ayudarte?",
-    "intro": "Tarifas iniciales de referencia. Confirmamos alcance y disponibilidad antes de empezar.",
-    "tutoring": {
-      "title": "Tutorías de programación y big data",
-      "description": "Diagnóstico, clase en vivo, ejercicios y seguimiento.",
-      "price": "{{hourlyRate}} por hora",
-      "detail": "Paquete de {{packageHours}} horas: {{packagePrice}}.",
-      "action": "Consultar tutorías"
+    "intro": "Paquetes en USD. Confirmamos alcance antes de empezar.",
+    "landingPage": {
+      "title": "Landing page para negocio",
+      "description": "Una página para presentar tu negocio y facilitar el contacto.",
+      "price": "Desde {{price}}",
+      "detail": "Alcance y entregables acordados antes de empezar.",
+      "action": "Cotizar mi landing page"
     },
-    "development": {
-      "title": "Desarrollo de software",
-      "description": "Aplicaciones web y móviles, sistemas internos, integraciones y automatizaciones.",
-      "price": "{{referenceHourlyRate}} por hora",
-      "detail": "Entregables y alcance acordados.",
-      "action": "Cotizar mi proyecto",
-      "example": "Ejemplo: {{exampleHours}} horas = {{examplePrice}}."
+    "website": {
+      "title": "Sitio web administrable",
+      "description": "Un sitio de hasta {{maxSections}} secciones que puedes administrar.",
+      "price": "Desde {{price}}",
+      "detail": "Confirmamos las secciones y el alcance antes de empezar.",
+      "action": "Cotizar mi sitio web"
     },
-    "maintenance": {
-      "title": "Mantenimiento de software",
-      "description": "Mantenimiento programado, pequeños cambios y revisión de tu software.",
-      "price": "{{monthlyPrice}} por mes",
-      "detail": "Hasta {{includedHours}} horas incluidas.",
-      "action": "Consultar mantenimiento",
-      "extraWithApproval": "Horas adicionales: {{additionalHourlyRate}} por hora, previa aprobación.",
-      "extraWithoutApproval": "Horas adicionales: {{additionalHourlyRate}} por hora.",
-      "note": "Servicio sujeto a evaluación del software."
+    "onlineStore": {
+      "title": "Catálogo o tienda online",
+      "description": "Un catálogo o tienda online con pedidos por WhatsApp.",
+      "price": "Desde {{price}}",
+      "detail": "La pasarela de pago local se cotiza aparte.",
+      "action": "Cotizar mi tienda online"
     },
-    "pythonCourse": {
-      "title": "Curso de Python en vivo",
-      "description": "Fundamentos de Python en {{sessions}} sesiones de {{hoursPerSession}} horas, con ejercicios y proyecto final.",
-      "price": "{{pricePerStudent}} por alumno",
-      "detail": "Se lanzará tras validar el contenido en tutorías.",
-      "badge": "Próximamente",
-      "action": "Quiero información",
-      "group": "Grupo de {{minStudents}} a {{maxStudents}} alumnos. {{totalHours}} horas en total."
+    "automation": {
+      "title": "Automatización de un proceso",
+      "description": "Automatizamos reportes, copia de datos entre herramientas o seguimientos.",
+      "price": "Desde {{price}}",
+      "detail": "El paquete cubre un proceso con alcance acordado.",
+      "action": "Consultar automatización"
+    },
+    "customSystem": {
+      "title": "Sistema a medida",
+      "description": "Un sistema para citas, inventario o un panel interno de tu negocio.",
+      "price": "Desde {{price}}",
+      "detail": "Definimos los entregables y el alcance antes de empezar.",
+      "action": "Cotizar mi sistema"
+    },
+    "maintenanceBasic": {
+      "title": "Mantenimiento Plan Básico",
+      "description": "Hosting, respaldos, actualizaciones y monitoreo.",
+      "price": "{{price}} por mes",
+      "detail": "No incluye horas de cambios. Servicio sujeto a evaluación del software.",
+      "action": "Consultar Plan Básico"
+    },
+    "maintenanceSupport": {
+      "title": "Mantenimiento Plan Soporte",
+      "description": "Mantenimiento con {{includedHours}} horas de cambios incluidas al mes.",
+      "price": "{{price}} por mes",
+      "detail": "Hora adicional: {{additionalHourlyRate}}, previa aprobación. Servicio sujeto a evaluación del software.",
+      "action": "Consultar Plan Soporte"
     }
   },
   "applications": {
-    "title": "Nuestras aplicaciones",
-    "intro": "Conoce nuestras soluciones y consulta sus funcionalidades.",
+    "title": "Proyectos desarrollados",
+    "intro": "Conoce algunos de los proyectos en los que hemos trabajado y lo que resuelven.",
     "finance": {
       "name": "SmartFinance PTY",
-      "action": "Consultar información de SmartFinance PTY"
+      "action": "Consultar información de SmartFinance PTY",
+      "description": "App de finanzas personales.",
+      "features": {
+        "first": "Escaneo de recibos con la cámara",
+        "second": "Presupuestos con alertas",
+        "third": "Análisis de gastos en tiempo real"
+      },
+      "imageAlt": "Ilustración conceptual de un móvil con gráficos de gastos, un recibo y monedas."
     },
     "pos": {
       "name": "SmartPOS PTY",
-      "action": "Consultar información de SmartPOS PTY"
+      "action": "Consultar información de SmartPOS PTY",
+      "description": "Desarrollamos un punto de venta y tienda en línea para pymes.",
+      "features": {
+        "first": "Ventas e inventario",
+        "second": "Cotizaciones compartidas por WhatsApp",
+        "third": "Pagos con Yappy, tarjetas y transferencia"
+      },
+      "imageAlt": "Ilustración conceptual de un portátil con inventario y ventas, cajas y un terminal de pago."
     },
-    "action": "Consultar información"
+    "action": "Consultar información",
+    "illustration": "Ilustración conceptual; no es una captura del producto.",
+    "omnisphere": {
+      "name": "OmniSphere AI",
+      "action": "Consultar información de OmniSphere AI",
+      "description": "Desarrollamos una plataforma multiempresa para crear y operar chatbots con inteligencia artificial.",
+      "features": {
+        "first": "Creación de flujos de conversación",
+        "second": "Reconocimiento de intenciones",
+        "third": "Gestión de canales por organización"
+      },
+      "imageAlt": "Ilustración conceptual de conversaciones conectadas en un portátil."
+    },
+    "helpdesk": {
+      "name": "Helpdesk AI Automation",
+      "action": "Consultar información de Helpdesk AI Automation",
+      "description": "Automatización de consultas de soporte y gestión de incidencias por WhatsApp.",
+      "features": {
+        "first": "Respuestas asistidas por inteligencia artificial",
+        "second": "Creación y consulta de tickets",
+        "third": "Archivos adjuntos en incidencias"
+      },
+      "imageAlt": "Ilustración conceptual de un móvil con mensajes, tickets de soporte y auriculares."
+    },
+    "worldCup": {
+      "name": "World Cup Predictor AI",
+      "action": "Consultar información de World Cup Predictor AI",
+      "description": "Análisis probabilístico de partidos de fútbol y simulación de torneos.",
+      "features": {
+        "first": "Probabilidades de resultados de partidos",
+        "second": "Simulación de torneos por Monte Carlo",
+        "third": "Comparación de modelos estadísticos"
+      },
+      "imageAlt": "Ilustración conceptual de un portátil con análisis de fútbol, un balón y un cuadro de torneo."
+    },
+    "blackNinja": {
+      "name": "Black Ninja",
+      "action": "Consultar información de Black Ninja",
+      "description": "Videojuego de plataformas para navegador, con niveles y puntuaciones.",
+      "features": {
+        "first": "Plataformas, saltos y recolección de monedas",
+        "second": "Controles de teclado",
+        "third": "Registro de puntuaciones por nivel"
+      },
+      "imageAlt": "Ilustración conceptual de un ninja saltando entre plataformas y monedas que salen de un portátil."
+    },
+    "status": {
+      "published": "Publicado",
+      "development": "En desarrollo",
+      "unpublished": "Sin publicar"
+    },
+    "plannedFeatures": "Alcance previsto del proyecto"
   },
   "process": {
     "title": "Así trabajamos",
     "conversation": {
       "number": "1",
       "title": "Conversamos sobre tu necesidad",
-      "description": "Entendemos tu idea o el apoyo que buscas."
+      "description": "Entendemos tu idea y el apoyo que buscas."
     },
     "scope": {
       "number": "2",
@@ -92,17 +173,17 @@
     "collaboration": {
       "number": "3",
       "title": "Trabajamos contigo",
-      "description": "Desarrollamos, enseñamos o mantenemos tu software."
+      "description": "Desarrollamos, automatizamos o mantenemos tu software."
     }
   },
   "contact": {
-    "title": "¿Qué te gustaría crear o aprender?",
+    "title": "¿Qué te gustaría crear?",
     "description": "Cuéntanos lo que necesitas y encontremos el siguiente paso.",
     "whatsapp": "Conversemos por WhatsApp",
     "pending": "Pronto compartiremos nuestros canales de contacto."
   },
   "footer": {
-    "tagline": "Desarrollo · Formación · Mantenimiento"
+    "tagline": "Desarrollo · Automatización · Mantenimiento"
   },
   "accessibility": {
     "skip": "Saltar al contenido",
@@ -112,21 +193,46 @@
     "skipStartup": "Saltar introducción"
   },
   "seo": {
-    "title": "Desarrollo, formación y mantenimiento de software | Equipo independiente",
-    "description": "Somos un equipo de profesionales independientes. Ofrecemos tutorías de programación y big data, desarrollo y mantenimiento de software. Conoce nuestro próximo curso de Python."
+    "title": "Software a medida para negocios en Panamá | Tech Together",
+    "description": "Somos Tech Together, un grupo de programadores en Panamá. Desarrollamos webs, sistemas y automatizaciones para pymes y negocios, con planes de mantenimiento."
   },
   "whatsapp": {
-    "general": "Hola, me gustaría conocer más sobre los servicios de su equipo.",
-    "tutoring": "Hola, me interesan las tutorías de programación y big data. Quisiera consultar disponibilidad y cómo comenzar.",
-    "pythonCourse": "Hola, me interesa recibir información sobre el próximo curso de fundamentos de Python.",
-    "development": "Hola, tengo un proyecto y quisiera conversar sobre su alcance y solicitar una cotización.",
-    "maintenance": "Hola, quisiera consultar si pueden encargarse del mantenimiento de mi software y conocer las condiciones del servicio.",
-    "application": "Hola, me gustaría conocer más sobre {{productName}} y sus funcionalidades."
+    "general": "Hola, Tech Together. Me gustaría conocer más sobre los servicios de Tech Together.",
+    "landingPage": "Hola, Tech Together. Me interesa una landing page para mi negocio. Quisiera consultar el alcance y solicitar una cotización.",
+    "website": "Hola, Tech Together. Me interesa un sitio web administrable. Quisiera consultar las secciones y el alcance.",
+    "onlineStore": "Hola, Tech Together. Me interesa un catálogo o tienda online con pedidos por WhatsApp. Quisiera solicitar una cotización.",
+    "automation": "Hola, Tech Together. Quisiera automatizar un proceso de mi negocio y conversar sobre su alcance.",
+    "customSystem": "Hola, Tech Together. Necesito un sistema a medida para mi negocio. Quisiera conversar sobre el alcance y solicitar una cotización.",
+    "maintenanceBasic": "Hola, Tech Together. Me interesa el Mantenimiento Plan Básico. Quisiera conocer las condiciones y evaluar mi software.",
+    "maintenanceSupport": "Hola, Tech Together. Me interesa el Mantenimiento Plan Soporte. Quisiera conocer las condiciones y las horas de cambios incluidas.",
+    "application": "Hola, Tech Together. Me gustaría conocer más sobre {{productName}} y sus funcionalidades."
   },
   "errors": {
     "unsupportedLanguage": "Ofrecemos esta página en español e inglés.",
     "languageChange": "No pudimos cambiar el idioma. Podemos intentarlo de nuevo.",
-    "preferenceStorage": "Cambiamos el idioma, pero no pudimos guardar la preferencia en este navegador.",
+    "preferenceStorage": "Cambiamos el idioma, pero no pudimos guardar tu preferencia en este navegador.",
     "contactUnavailable": "No podemos abrir el contacto en este momento. Intentémoslo más tarde."
+  },
+  "about": {
+    "title": "Sobre nosotros",
+    "description": "Somos un grupo de programadores en Panamá. Tenemos más de 5 años desarrollando software, haciendo QA y trabajando con la nube, incluidos proyectos para banca y fintech. Nos enfocamos en soluciones prácticas para negocios: claras, seguras y fáciles de mantener.",
+    "technologiesTitle": "Tecnologías con las que trabajamos",
+    "technologies": {
+      "angular": "Angular",
+      "node": "Node.js",
+      "java": "Java",
+      "python": "Python",
+      "aws": "AWS",
+      "azure": "Azure",
+      "sql": "SQL",
+      "mongodb": "MongoDB"
+    },
+    "values": {
+      "security": "Seguridad desde el diseño",
+      "pricing": "Precios claros antes de empezar",
+      "support": "Soporte después de la entrega"
+    },
+    "imageAlt": "Imagen de ambientación de un espacio de trabajo con portátiles y plantas.",
+    "instagramLabel": "Tech Together en Instagram"
   }
 }

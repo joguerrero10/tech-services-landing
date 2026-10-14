@@ -1,3 +1,4 @@
+import { About } from './components/about/about';
 import { StartupLoader } from '../../shared/components/startup-loader/startup-loader';
 import { RouterLink } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -19,6 +20,7 @@ import { Footer } from '../../shared/components/footer/footer';
     Hero,
     Services,
     Applications,
+    About,
     Process,
     Contact,
     Footer,

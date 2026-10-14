@@ -1,0 +1,13 @@
+{
+  "tool": "Built-in image_gen",
+  "shared": "Use case: stylized-concept. Asset type: horizontal portfolio illustration for Tech Together landing. Create a premium, tactile editorial 3D illustration, landscape 8:5 composition, cream backdrop #FAF8F3, forest green #173F32 and terracotta #B95638 accents. Warm soft studio daylight, subtle shadows, refined material detail, clean balanced generous margins, not a poster. No typography, no letters, no numbers, no logos, no watermark, no people. Abstract illustrative visualization, not a screenshot or promise of actual interface. One image only. Subject: ",
+  "subjects": {
+    "smartfinance": "A tilted elegant smartphone with abstract budget ring chart and simple expense bars, alongside a paper receipt with only abstract lines and a small stack of coins, warm wood pedestal. Personal finance and expense organization.",
+    "smartpos": "An elegant laptop displaying abstract inventory tiles and simple sales bars with no text, small unbranded card terminal and two modest product boxes on warm wood. Point of sale system in development.",
+    "omnisphere": "An elegant laptop with abstract linked conversation nodes on a forest green screen, three sculptural conversation bubbles and one small terracotta central connector. Organized AI conversations for businesses, conceptual system in development.",
+    "helpdesk": "An upright smartphone with abstract chat bubbles, three ticket-shaped paper cards with simple check and clock icons, and a small headset nearby. AI assisted support requests and tracking. Clean professional warm environment.",
+    "world-cup": "An elegant laptop with an abstract football pitch diagram and restrained probability bar shapes, beside a football and small tournament bracket sculpture. Analytical sports data illustration, no results, no teams, no flags.",
+    "black-ninja": "A playful high quality miniature platform game world emerging from a laptop screen, stylized tiny masked black ninja with terracotta scarf, low-poly forest green mountains, floating grassy stone platforms and golden coins. Friendly sophisticated game illustration, no real people."
+  },
+  "originals": "docs/assets/originals/{project}.png"
+}

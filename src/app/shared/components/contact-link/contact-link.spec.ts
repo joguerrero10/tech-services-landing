@@ -29,12 +29,12 @@ describe('Localized contact states', () => {
         'text',
       );
     expect(getMessage()).toBe(
-      'Hola, me gustaría conocer más sobre SmartFinance PTY y sus funcionalidades.',
+      'Hola, Tech Together. Me gustaría conocer más sobre SmartFinance PTY y sus funcionalidades.',
     );
     await language.activate('en');
     await fixture.whenStable();
     expect(getMessage()).toBe(
-      'Hello, I would like to learn more about SmartFinance PTY and its features.',
+      'Hello, Tech Together. I would like to learn more about SmartFinance PTY and its features.',
     );
     expect(open).not.toHaveBeenCalled();
     open.mockRestore();
